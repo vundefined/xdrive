@@ -1,0 +1,11 @@
+var timeHandle = function(dateStr) {
+    // const pattern = /\d{2}:\d{2}:\d{2}/;
+    // const match = dateStr.match(pattern);
+    // return match[0]
+
+    return dateStr.split(' ')[1];
+}
+
+module.exports = {
+    timeHandle: timeHandle
+}

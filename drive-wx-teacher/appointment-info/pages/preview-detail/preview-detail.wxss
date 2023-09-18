@@ -1,0 +1,5 @@
+@import "/styles/label-style.wxss";
+@import "/styles/color-enum.wxss";
+@import "/styles/flex-layout.wxss";
+@import "/styles/img-size.wxss";
+@import "/styles/common-margin.wxss";

@@ -1,0 +1,4 @@
+<!-- <button type="primary" plain="true" catch:tap="wxLogin">登录</button> -->
+<!-- <button type="primary" plain="true" catch:tap="wxCheckSession">wxCheckSession</button> -->
+<view class="title">系统公告: </view>
+<view class="txt-a">{{notification.nContent}}</view>

@@ -1,0 +1,27 @@
+@import "/styles/label-style.wxss";
+@import "/styles/txt-style.wxss";
+@import "/styles/layout-style.wxss";
+@import "/styles/common-margin.wxss";
+
+.cd-normal-during {
+	width: 340rpx;
+	height: 60rpx;
+	text-align: center;
+	line-height: 60rpx;
+	border: 2rpx solid #F2F2F2;
+	margin-bottom: 20rpx;
+}
+
+.cd-selected-during {
+	width: 340rpx;
+	height: 60rpx;
+	text-align: center;
+	line-height: 60rpx;
+	border: 2rpx solid rgb(255, 0, 0);
+	margin-bottom: 20rpx;
+}
+
+.zhanwei:after{
+    content: '';
+    width: 340rpx;
+}

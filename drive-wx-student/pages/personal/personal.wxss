@@ -1,0 +1,35 @@
+.page {
+    width: 750rpx;
+    height: 800rpx;
+    /* background-color: #F5F5F5; */
+}
+
+.label {
+    width: 750rpx;
+    height: 96rpx;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    padding: 0rpx 44rpx 0rpx 44rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2rpx solid #F2F2F2;
+}
+
+.text-a {
+    font-size: 32rpx;
+    font-weight: 600;
+    margin: 0rpx 0rpx 0rpx 16rpx;
+}
+
+.img-a {
+    width: 40rpx;
+    height: 40rpx;
+    vertical-align: bottom;
+}
+
+.img-b {
+    width: 48rpx;
+    height: 48rpx;
+}

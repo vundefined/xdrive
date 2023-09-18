@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'org.apache.shiro'
+version 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':shiro-lang')
+    implementation project(':shiro-event')
+
+    implementation 'commons-beanutils:commons-beanutils:1.9.4'
+    implementation 'org.apache.commons:commons-configuration2:2.8.0'
+
+    implementation('org.slf4j:slf4j-api:2.0.0'){transitive(false)}
+    implementation('ch.qos.logback:logback-core:1.4.0'){transitive(false)}
+    implementation('ch.qos.logback:logback-classic:1.4.0'){transitive(false)}
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,24 @@
+.title {
+    margin: 30rpx 0rpx;
+    padding: 0rpx 44rpx;
+    font-size: 30rpx;
+    color: #000000;
+    font-weight: bold;
+}
+
+.txt-a {
+    padding: 0rpx 44rpx;
+    font-weight: 300;
+    font-size: 32rpx;
+}
+
+.tips{
+    padding: 0rpx 80rpx;
+    margin-top: 100rpx;
+    color: #EE2C2C;
+}
+
+.tips-b{
+    padding: 0rpx 44rpx;
+    color: #EE2C2C;
+}

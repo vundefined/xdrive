@@ -1,0 +1,24 @@
+<form catchsubmit="jobInfoSave">
+    <view class="label">
+        <view class="label-title">从业时间</view>
+        <picker class="label-field" mode="date" value="{{jobInfo.time}}" bindchange="bindDateChange">{{jobInfo.time}}</picker>
+    </view>
+    <view class="label">
+        <view class="label-title">证件编号</view>
+        <input class="label-field" type="text" name="encode" value="{{jobInfo.encode}}" placeholder="请输入证件 证件编号" />
+    </view>
+    <view class="label">
+        <view class="label-title">驾校名称</view>
+        <input class="label-field" type="text" name="companyName" value="{{jobInfo.companyName}}" placeholder="请输入..." />
+    </view>
+    <view class="label">
+        <view class="label-title">驾校地址</view>
+        <input class="label-field" type="text" name="companyAddress" value="{{jobInfo.companyAddress}}" placeholder="请输入..." />
+    </view>
+
+    <view class="title">上传证件照片:</view>
+    <image class="img-upload-large" wx:if="{{jobInfo.img}}" src="{{staticUrl + jobInfo.img}}" catch:tap="uploadFile"></image>
+    <image class="img-upload-large" wx:else src="/images/addb.png" catch:tap="uploadFile"></image>
+
+    <button class="margin-a" type="primary" formType="submit">保存</button>
+</form>

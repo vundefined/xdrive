@@ -1,0 +1,41 @@
+<view class="label">
+	<view class="label-title">头像</view>
+	<image class="img-upload-small" src="{{staticUrl + previewDetail.wxUserBase.avatar}}"></image>
+</view>
+<view class="label">
+	<view class="label-title">预约时间</view>
+	<view class="label-field">{{previewDetail.addTime}}</view>
+</view>
+<view class="label">
+	<view class="label-title">预约项目</view>
+	<view class="label-field">{{previewDetail.className}}</view>
+</view>
+<view class="label">
+	<view class="label-title">预约时间段</view>
+	<view class="label-field">{{previewDetail.duringStartTime}} - {{previewDetail.duringEndTime}}</view>
+</view>
+<view class="label">
+	<view class="label-title">预约学员</view>
+	<view class="label-field">{{previewDetail.wxUserBase.reallname}} - {{previewDetail.wxUserBase.mobile}}</view>
+</view>
+<view class="label">
+	<view class="label-title">预约状态</view>
+	<view wx:if="{{previewDetail.status == 0}}" class="label-field blue">审核中</view>
+	<view wx:if="{{previewDetail.status == 1}}" class="label-field green">通过</view>
+	<view wx:if="{{previewDetail.status == 2}}" class="label-field red">未通过</view>
+	<view wx:if="{{previewDetail.status == 3}}" class="label-field orange">已取消</view>
+</view>
+<view class="label">
+	<view class="label-title">预约统计</view>
+	<view class="label-field">
+		<!-- 
+		<text class="green">通过: 1 </text>
+		<text class="red"> 未通过: 2</text>
+		-->
+		<text>请等待, 正在修复</text>
+	</view>
+</view>
+<view class="row-center">
+	<button class="margin-a" style="width: 300rpx;" wx:if="{{previewDetail.status == 1 || item.status == 2 }}" type="warn" catch:tap="changeStatusTap">撤销至审核中</button>
+	<button class="margin-a" style="width: 300rpx;" wx:if="{{previewDetail.status == 0}}" type="primary" catch:tap="appointmentApproved">通过</button>
+</view>

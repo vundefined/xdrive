@@ -1,0 +1,15 @@
+.margin-a {
+	margin-top: 80rpx;
+}
+
+.margin-b {
+	margin-top: 30rpx;
+}
+
+.margin-c {
+	margin-top: 50rpx;
+}
+
+.margin-d {
+    margin: 0rpx 0rpx 0rpx 30rpx;
+}

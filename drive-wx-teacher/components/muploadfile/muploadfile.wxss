@@ -1,0 +1,41 @@
+.uppic-wrap {
+    padding: 44rpx 20rpx;
+}
+
+.pic-line {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0rpx 0rpx 20rpx 0rpx;
+}
+
+.ing-up {
+    margin-right: 32rpx;
+    position: relative;
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.ing-up image {
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.ing-up .delete {
+    position: absolute;
+    width: 32rpx;
+    height: 32rpx;
+    background-size: cover;
+    right: -10rpx;
+    top: -10rpx;
+}
+
+.up-ico image {
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.up-ico text {
+    font-size: 22rpx;
+    color: #999;
+}

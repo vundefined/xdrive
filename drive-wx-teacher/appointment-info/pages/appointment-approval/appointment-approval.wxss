@@ -1,0 +1,52 @@
+@import "/styles/label-style.wxss";
+@import "/styles/color-enum.wxss";
+@import "/styles/flex-layout.wxss";
+@import "/styles/nodata.wxss";
+@import "/styles/txt-style.wxss";
+@import "/styles/img-size.wxss";
+@import "/styles/common-margin.wxss";
+
+.cd-normal-class {
+	width: 180rpx;
+	height: 60rpx;
+	text-align: center;
+	line-height: 60rpx;
+	border: 2rpx solid #F2F2F2;
+	margin-bottom: 20rpx;
+	margin: 0rpx 10rpx 0rpx 10rpx;
+}
+
+.cd-selected-class {
+	width: 180rpx;
+	height: 60rpx;
+	text-align: center;
+	line-height: 60rpx;
+	border: 2rpx solid rgb(255, 0, 0);
+	margin-bottom: 20rpx;
+	margin: 0rpx 10rpx 0rpx 10rpx;
+}
+
+.padding-a {
+	padding: 0rpx 34rpx 34rpx 34rpx;
+}
+
+.fixed-bottom {
+	width: 750rpx;
+	height: 160rpx;
+	position: fixed;
+	bottom: 0rpx;
+	left: 0rpx;
+	background-color: #ffffff;
+	box-shadow: 0px -10rpx 20rpx 0rpx #686B66;
+}
+
+.btn-absolute {
+	position: absolute;
+	left: 25rpx;
+	top: 40rpx;
+}
+
+.box-a {
+	background-color: #f5f5f5;
+	padding: 20rpx 0rpx 190rpx 0rpx;
+}

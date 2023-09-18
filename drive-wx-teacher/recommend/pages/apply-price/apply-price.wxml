@@ -1,0 +1,16 @@
+<view class="title">金额填写说明:</view>
+<view class="txt-a">培训金额单位为: 元。</view>
+<view class="txt-a">设置一项，保存一项，否则数据将会丢失。</view>
+<view class="title">平台抽成说明:</view>
+<view class="txt-a"><text>{{notification.nContent}}</text></view>
+<view class="title">驾驶证类型:</view>
+<view class="row-center-wrap-b padding-a">
+	<block wx:for="{{classs}}" wx:key="id">
+		<view class="{{classId == item.id ? 'cd-selected-class' : 'cd-normal-class'}}" data-id="{{item.id}}" catchtap="curClass">{{item.cName}}</view>
+	</block>
+</view>
+<view class="label">
+	<view class="label-title">培训金额</view>
+	<input class="label-field" type="number" name="price" value="{{price}}" bindinput="changePrice" placeholder="请输入..." />
+</view>
+<button class="margin-a" type="primary" catch:tap="saveTap">保存</button>

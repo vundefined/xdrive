@@ -1,0 +1,5 @@
+<view class="txt-a">
+    <text>{{notification.nContent}}</text>    
+</view>
+
+

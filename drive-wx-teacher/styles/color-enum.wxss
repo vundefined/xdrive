@@ -1,0 +1,19 @@
+/* 审核中 */
+.red {
+    color: red;
+}
+
+/* 通过 */
+.green {
+    color: green;
+}
+
+/* 未通过 */
+.blue {
+    color: blue;
+}
+
+/* 已取消 */
+.orange{
+    color: orange;
+}

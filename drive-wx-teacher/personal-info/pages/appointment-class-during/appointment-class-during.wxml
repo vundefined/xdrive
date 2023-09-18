@@ -1,0 +1,18 @@
+<view class="row-center">
+	<button type="primary" catchtap="navigateClass">配置驾驶证类型</button>
+	<button type="primary" catchtap="navigateDuring">配置可预约时间段</button>	
+</view>
+<view class="title">驾驶证类型:</view>
+<view class="row-center-wrap-b padding-a">
+	<block wx:for="{{appointmentClassList}}" wx:key="id">
+		<view class="{{appointmentClassIndex == index ? 'cd-selected-class' : 'cd-normal-class'}}" data-index="{{index}}" catchtap="curClass">{{driveLicenseClassTree[item.classIndex[0]].cName}} - {{driveLicenseClassTree[item.classIndex[0]].children[item.classIndex[1]].cName}}</view>
+	</block>
+</view>
+<view class="title">可预约时间段:</view>
+<view class="row-center-wrap zhanwei">
+	<block wx:for="{{appointmentDuringList}}" wx:key="id">
+		<view class="{{item.checked ? 'cd-selected-during' : 'cd-normal-during'}}" data-index="{{index}}" catchtap="appointmentDuringCurrent">{{item.startTime}} - {{item.endTime}}</view>
+	</block>
+</view>
+<button class="margin-a" type="primary" catchtap="bindTap">保存</button>
+<view class="mb-split"></view>

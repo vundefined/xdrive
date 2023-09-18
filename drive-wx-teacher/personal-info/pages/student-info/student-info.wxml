@@ -1,0 +1,38 @@
+<view class="label">
+	<view class="label-title">头像</view>
+	<image class="img-upload-small" src="{{staticUrl + basicInfo.wxUserBase.avatar}}"></image>
+</view>
+<view class="label">
+	<view class="label-title">昵称</view>
+	<view class="label-field">{{basicInfo.wxUserBase.nickname}}</view>
+</view>
+<view class="label">
+	<view class="label-title">真实姓名</view>
+	<view class="label-field">{{basicInfo.wxUserBase.reallname}}</view>
+</view>
+<view class="label">
+	<view class="label-title">手机号</view>
+	<view class="label-field">{{basicInfo.wxUserBase.mobile}}</view>
+</view>
+<view class="label">
+	<view class="label-title">性别</view>
+	<view class="label-field">{{basicInfo.wxUserBase.gender == 0 ? "男" : "女"}}</view>
+</view>
+<view class="label">
+	<view class="label-title">来源</view>
+	<view class="label-field">{{basicInfo.qrType == 0 ? "邀请" : "推广"}}</view>
+</view>
+<!-- 
+<block wx:if="{{basicInfo.qrType == 1}}">
+	<view class="label">
+		<view class="label-title">报名费</view>
+		<view class="label-field">{{basicInfo.originPrice}}</view>
+	</view>
+	<view class="label">
+		<view class="label-title">已交费用</view>
+		<view class="label-field">{{basicInfo.price}}</view>
+	</view>
+</block> -->
+<button class="margin-a" type="primary" disabled="{{basicInfo.deleted}}" catch:tap="unBindTeacher">解除绑定</button>
+
+<view class="txt-a">如果为该学员解除绑定后需重新扫码绑定</view>

@@ -1,0 +1,19 @@
+<view class="label">
+	<view class="label-title">预约开始时间</view>
+	<picker class="label-field" mode="time" value="{{appointmentRule.startTime}}" bindchange="startTimeChange">{{appointmentRule.startTime}}</picker>
+</view>
+<view class="label">
+	<view class="label-title">预约截止时间</view>
+	<picker class="label-field" mode="time" value="{{appointmentRule.endTime}}" bindchange="endTimeChange">{{appointmentRule.endTime}}</picker>
+</view>
+<view class="title">每周休息日 星期 (红色为选中的值)</view>
+<view class="week">
+	<block wx:for="{{week}}" wx:key="id">
+		<view class="{{ item.checked ? 'week-i checked' : 'week-i normal'}}" data-index="{{index}}" catchtap="weekCheckTap">{{item.name}}</view>
+	</block>
+</view>
+<view class="title">预约规则:</view>
+<textarea class="txt-inp" maxlength="-1" confirm-type="return" bindinput="ruleDone" value="{{appointmentRule.ruleTxt}}" placeholder="请输入预约规则内容"></textarea>
+<button class="margin-b" type="primary" catchtap="appointmentRuleSave">保存</button>
+<button class="margin-b" type="primary" catchtap="navigateClassDuring">类型与时间段绑定</button>
+<view class="mb-split"></view>

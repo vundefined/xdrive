@@ -1,0 +1,28 @@
+<view class="label">
+    <view class="label-title">车辆型号</view>
+    <input class="label-field" type="text" name="name" model:value="{{name}}" placeholder="请输入..." />
+</view>
+<view class="label">
+    <view class="label-title">车牌号</view>
+    <input class="label-field" type="text" name="encode" model:value="{{encode}}" placeholder="请输入..." />
+</view>
+<view class="title">上传车辆照片:</view>
+<image class="img-upload-large" wx:if="{{img}}" src="{{staticUrl + img}}" catch:tap="uploadFile"></image>
+<image class="img-upload-large" wx:else src="/images/addb.png" catch:tap="uploadFile"></image>
+<button class="margin-a" type="primary" catch:tap="carSave">保存</button>
+
+<block wx:for="{{carList}}" wx:key="id">
+    <view class="ma-split"></view>
+    <view class="label">
+        <view class="label-title">车辆型号</view>
+        <view class="label-field">{{item.name}}</view>
+    </view>
+    <view class="label">
+        <view class="label-title">车牌号</view>
+        <view class="label-field">{{item.encode}}</view>
+    </view>
+    <view class="title">车辆照片:</view>
+    <image class="img-upload-large" src="{{staticUrl + item.img}}"></image>
+    <button class="margin-b" type="warn" data-id="{{item.id}}" catch:tap="carDelete">删除</button>
+</block>
+<view class="mb-split"></view>

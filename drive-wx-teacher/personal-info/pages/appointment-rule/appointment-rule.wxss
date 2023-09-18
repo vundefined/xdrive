@@ -1,0 +1,38 @@
+@import '/styles/label-style.wxss';
+@import '/styles/common-margin.wxss';
+@import '/styles/txt-style.wxss';
+
+.week {
+	width: 750rpx;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0rpx 44rpx;
+}
+.week-i {
+	width: 80rpx;
+	height: 80rpx;
+	color: #ffffff;
+	text-align: center;
+	line-height: 80rpx;
+}
+.normal {
+	background-color: rgb(76, 0, 255);
+}
+
+.checked {
+	background-color: rgb(255, 0, 0);
+}
+
+.txt-inp {
+	width: 662rpx;
+	height: 400rpx;
+	box-sizing: border-box;
+	border: 2rpx solid #F2F2F2;
+	padding: 20rpx 16rpx;
+	margin: 0rpx 44rpx 0rpx 44rpx;
+	font-weight: 300;
+    font-size: 32rpx;
+}
+

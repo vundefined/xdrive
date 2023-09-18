@@ -1,0 +1,3 @@
+@import "/styles/label-style.wxss";
+@import "/styles/common-margin.wxss";
+@import "/styles/img-style.wxss";

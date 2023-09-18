@@ -1,0 +1,14 @@
+<view class="uppic-wrap">
+    <view class="pic-line">
+        <block wx:for="{{imgArr}}" wx:key="unique">
+            <view class="ing-up">
+                <image src="{{staticUrl + item}}"></image>
+                <image class="delete" src="/images/detelt.png" data-index="{{index}}" bindtap="deletepic"></image>
+            </view>
+        </block>
+    </view>
+    <view class="up-ico" bindtap="uploadImgTap">
+        <image src="/images/adda.png"></image>
+        <text>（最多上传5张图片）</text>
+    </view>
+</view>

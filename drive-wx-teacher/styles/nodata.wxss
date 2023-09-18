@@ -1,0 +1,12 @@
+.nd-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 260rpx 0rpx 0rpx 0rpx;
+}
+
+.nd-text {
+	color: #999999;
+	font-size: 30rpx;
+}

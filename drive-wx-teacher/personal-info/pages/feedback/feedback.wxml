@@ -1,0 +1,9 @@
+<view class="feedback">
+    <view class="title">
+        <view class="tips">请输入反馈的内容</view>
+        <view class="feedback-history" catchtap="feedbackHistoryTap">反馈记录</view>
+    </view>
+    <textarea class="text-area" placeholder="使用过程中遇到的问题，希望增加的服务，对应用优化的建议，都欢迎您写在这里。" cursor-spacing="30" bindinput="getFeedbackText"></textarea>
+	<m-upload-file bind:changeFile="changeFile"></m-upload-file>
+    <view class="commit-btn" catchtap="fCommitTap">提交</view>
+</view>

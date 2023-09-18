@@ -1,0 +1,23 @@
+.table-box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.el-table {
+    flex-grow: 1;
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    margin: 0px 0px 20px 0px;
+}
+
+.input-width{
+    width: 300px;
+}
+
+.el-pagination {
+    margin-top: 20px;
+}

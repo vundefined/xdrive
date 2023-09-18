@@ -1,0 +1,26 @@
+<view class="label">
+    <view class="label-title">预约对象</view>
+    <view class="label-field">{{wxUserBase.reallname}} - {{wxUserBase.mobile}}</view>
+</view>
+<view class="label">
+    <view class="label-title">驾驶证类型</view>
+    <view class="label-field">{{driveLicenseClassTree[classIndex[0]].cName}} - {{driveLicenseClassTree[classIndex[0]].children[classIndex[1]].cName}}</view>
+</view>
+<view class="label">
+    <view class="label-title">可预约时间</view>
+    <view class="label-field">{{appointmentRule.startTime}} - {{appointmentRule.endTime}}</view>
+</view>
+<view class="label">
+    <view class="label-title">教练休息日</view>
+    <view class="label-field">
+        <text wx:for="{{appointmentRule.rest}}" wx:key="unique">周{{item}}, </text>
+    </view>
+</view>
+<view class="title">可预约时间段:</view>
+<view class="row-center-wrap zhanwei">
+	<block wx:for="{{appointmentDuringList}}" wx:key="id">
+		<view class="{{duringIndex == index ? 'cd-selected-during' : 'cd-normal-during'}}" data-index="{{index}}" catchtap="appointmentDuringCurrent">{{item.startTime}} - {{item.endTime}}</view>
+	</block>
+</view>
+<button class="margin-a" type="primary" catchtap="commitTap">提交预约申请</button>
+<view class="mb-split"></view>

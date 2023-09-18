@@ -1,0 +1,10 @@
+<!-- <button type="primary" plain="true" catch:tap="wxLogin">登录</button> -->
+<!-- <button type="primary" plain="true" catch:tap="bindTeacher">绑定教练</button> -->
+
+<view class="title">系统公告: </view>
+<view class="txt-a">{{notification.nContent}}</view>
+
+<navigator class="c-item cia-color" url="/pages/webvieww/webvieww?srcPath=https://wyflamingo.com/c101/index.html">科一</navigator>
+<navigator class="c-item cib-color">科二</navigator>
+<navigator class="c-item cic-color">科三</navigator>
+<navigator class="c-item cid-color">科四</navigator>

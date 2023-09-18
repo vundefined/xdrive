@@ -1,0 +1,8 @@
+<view class="title">推广拉新码使用说明:</view>
+<view class="txt-a">1. 请确保先配置了培训费用后，再对外公布推广拉新二维码。</view>
+<view class="txt-a">2. 点击下载推广码按钮，将会保存图片至相册，请注意查看。</view>
+<!-- <image class="img-a" src="{{qrImg}}" mode=""/> -->
+<image class="img-a" src="/images/noprice.png" />
+<button class="margin-c" type="primary" disabled="true" catch:tap="dwQrcode">下载推广码</button>
+<button class="margin-c" type="primary" disabled="true" catch:tap="applyPriceConfig">配置培训费用</button>
+<view class="mb-split"></view>

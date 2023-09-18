@@ -1,0 +1,52 @@
+<view class="page">
+    <navigator class="label" url="/personal-info/pages/base-info/base-info">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">基本信息</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/personal-info/pages/job-info/job-info">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">设置驾驶证类型</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/personal-info/pages/teachers/teachers">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">我的教练</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/appointment-info/pages/appointment-record/appointment-record">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">我的预约记录</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/appointment-info/pages/appointment-preview/appointment-preview">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">预约预览</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/personal-info/pages/feedback/feedback">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">意见反馈</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <!-- 
+    <navigator class="label" url="/pages/publicity/publicity?teacherId=56857148">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">招生宣传页</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator> -->
+</view>

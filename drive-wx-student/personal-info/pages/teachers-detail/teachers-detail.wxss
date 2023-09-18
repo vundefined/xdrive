@@ -1,0 +1,16 @@
+@import "/styles/label-style.wxss";
+@import "/styles/common-margin.wxss";
+@import "/styles/img-style.wxss";
+@import "/styles/txt-style.wxss";
+
+page {
+    width: 750rpx;
+    box-sizing: border-box;
+    background-color: #F5F5F5;
+}
+
+.img-a {
+    width: 600rpx;
+    height: 280rpx;
+    margin-top: 24rpx;
+}

@@ -1,0 +1,13 @@
+<view class="preview">
+	<block wx:for="{{studentBaseVoList}}" wx:key="id">
+		<view class="preview-item" data-index="{{index}}" catch:tap="basicUserItem">
+			<image class="img-size" src="{{staticUrl + item.wxUserBase.avatar}}" mode=""/>
+			<view>{{item.wxUserBase.reallname}}</view>
+		</view>
+	</block>
+</view>
+<block wx:if="{{studentBaseVoList.length == 0}}">
+	<view class="nd-box">
+		<view class="nd-text">暂无数据</view>
+	</view>
+</block>

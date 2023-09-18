@@ -1,0 +1,29 @@
+@import "/styles/nodata.wxss";
+@import "/styles/txt-style.wxss";
+@import "/styles/common-margin.wxss";
+
+.card {
+    width: 662rpx;
+    box-sizing: border-box;
+    margin: 30rpx 44rpx 0rpx 44rpx;
+    padding: 20rpx;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.mnormal {
+    border: 2rpx solid #cac7c7;
+}
+
+.mdefault {
+    border: 2rpx solid #EE2C2C;
+}
+
+.avatar{
+    width: 180rpx;
+    height: 180rpx;
+    vertical-align: middle;
+    margin: 0rpx 20rpx 0rpx 0rpx;
+}
+

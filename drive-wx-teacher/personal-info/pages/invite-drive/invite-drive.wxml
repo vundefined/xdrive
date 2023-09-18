@@ -1,0 +1,25 @@
+<view class="title">邀请码使用说明:</view>
+<view class="txt-a">1. 打开微信，搜索 预约学车学员端 小程序，进入我的，我的教练，点击扫码添加教练按钮。</view>
+<view class="txt-a">2. 邀请码是指邀请已付费的学员，未付费的学员请走推广码流程。</view>
+<view class="txt-a">3. 当截止到过期时间还未加入的学员需重新生成邀请码。过期时间单位: 分钟</view>
+<view class="txt-a">4. 当学员加入数量大于设置的数量时需重新生成邀请码。</view>
+<view class="txt-a">5. 推荐面对面方式邀请学员加入，以防非本学员加入</view>
+<image class="img-a" wx:if="{{isExpired}}" src="/images/qrcodeExp.jpg" mode=""/>
+<image class="img-a" wx:else src="{{staticUrl + qrInvite.qrImg}}" mode=""/>
+<form bindsubmit="qrcodeGenerate">
+	<view class="label">
+        <view class="label-title">过期时间(分)</view>
+        <input class="label-field" type="number" name="qrTime" value="{{qrInvite.qrTime}}" placeholder="过期时间单位: 分钟" />
+    </view>
+    <view class="label">
+        <view class="label-title">加入数量</view>
+        <input class="label-field" type="number" name="qrCount" value="{{qrInvite.qrCount}}" placeholder="请输入..." />
+    </view>
+    <view class="label" wx:if="{{!isExpired}}">
+        <view class="label-title">创建时间</view>
+        <view class="label-field">{{qrInvite.updateTime}}</view>
+    </view>
+    <button class="margin-c" disabled="{{!isExpired}}" type="primary" formType="submit">生成邀请码</button>
+</form>
+<button class="margin-c" disabled="{{isExpired}}" type="primary" catch:tap="downloadQr">下载邀请码</button>
+<view class="mb-split"></view>

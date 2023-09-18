@@ -1,0 +1,31 @@
+<view class="label">
+    <view class="label-title">驾驶证类型</view>
+    <picker class="label-field" mode="multiSelector" range="{{range}}" range-key="cName" value="{{rangeIndex}}" bindcolumnchange="bindMultiPickerColumnChange">{{range[0][rangeIndex[0]].cName}} - {{range[1][rangeIndex[1]].cName}}</picker>
+</view>
+<button class="margin-a" type="primary" catch:tap="jobInfoSave">保存</button>
+<view class="tips">提示: 预约时将会以默认设置的科目项进行匹配预约练车</view>
+<block wx:for="{{jobInfoList}}" wx:key="id">
+    <view class="ma-split"></view>
+    <view class="label">
+        <view class="label-title">添加时间</view>
+        <view class="label-field">{{item.addTime}}</view>
+    </view>
+    <view class="label">
+        <view class="label-title">驾驶证类型</view>
+        <view class="label-field">{{driveLicenseClassTree[item.classIndex[0]].cName}} - {{driveLicenseClassTree[item.classIndex[0]].children[item.classIndex[1]].cName}}</view>
+    </view>
+    <view class="label">
+        <view class="label-title">教练为我的备注</view>
+        <view class="label-field">{{item.desc}}</view>
+    </view>
+    <view class="row-center">
+        <button class="margin-b" style="width: 300rpx;" disabled="{{settings.commonId == item.classId}}" type="primary" data-index="{{index}}" catch:tap="studentSettingsTap">设为默认</button>
+        <button class="margin-b" style="width: 300rpx;" type="warn" data-index="{{index}}" catch:tap="jobInfoDelete">删除</button>
+    </view>
+</block>
+<block wx:if="{{jobInfoList.length == 0}}">
+    <view class="nd-box">
+        <view class="nd-text">暂无数据</view>
+    </view>
+</block>
+<view class="mb-split"></view>

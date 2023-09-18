@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wypaperplane.syscore.mapper.QrRecommendMapper">
+
+    <resultMap id="resmap" type="com.wypaperplane.syscore.vo.QrRecommendVo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="teacher_id" property="teacherId" jdbcType="INTEGER"/>
+        <result column="class_id" property="classId" jdbcType="INTEGER"/>
+        <result column="price" property="price" jdbcType="INTEGER"/>
+        <result column="p_id" property="pId" jdbcType="INTEGER"/>
+        <result column="c_name" property="cName" jdbcType="VARCHAR"/>
+        <result column="c_desc" property="cDesc" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectByTeacher" resultMap="resmap">
+        select
+            qr.id,
+            qr.teacher_id,
+            qr.class_id,
+            qr.price,
+            dls.p_id,
+            dls.c_name,
+            dls.c_desc
+        from qr_recommend qr
+        LEFT JOIN drive_license_class dls ON dls.id = qr.class_id
+        where qr.teacher_id = #{teacherId}
+    </select>
+</mapper>

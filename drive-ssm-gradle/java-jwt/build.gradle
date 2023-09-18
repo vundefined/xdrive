@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+}
+
+group 'com.auth0.jwt'
+version '0.0.1'
+
+ext{
+    fasterxmlVersion = '2.15.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("com.fasterxml.jackson.core:jackson-core:${fasterxmlVersion}"){transitive(false)}
+    implementation("com.fasterxml.jackson.core:jackson-databind:${fasterxmlVersion}"){transitive(false)}
+    implementation("com.fasterxml.jackson.core:jackson-annotations:${fasterxmlVersion}"){transitive(false)}
+    implementation 'com.aventrix.jnanoid:jnanoid:2.0.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}

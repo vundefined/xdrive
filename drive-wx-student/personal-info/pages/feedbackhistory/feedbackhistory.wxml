@@ -1,0 +1,25 @@
+<block wx:for="{{feedBackData}}" wx:key="unique">
+	<view class="feed-back">
+		<view class="feed-back-num">反馈编号: {{item.id}}</view>
+		<view class="feed-back-content">
+			<view>反馈内容: </view>
+			<view>{{item.content}}</view>
+		</view>
+		<view>
+			<block wx:for="{{item.images}}" wx:key="unique">
+				<image class="feed-back-img" src="{{staticUrl + item}}" data-index="{{index}}" catchtap="previewImage"></image>
+			</block>
+		</view>
+		<view class="feed-back-content">
+			<view>反馈时间: </view>
+			<view>{{item.addTime}}</view>
+		</view>
+	</view>
+</block>
+<block wx:if="{{feedBackData.length == 0}}">
+	<view class="nd-box">
+		<view class="nd-text">暂无数据</view>
+	</view>
+</block>
+
+

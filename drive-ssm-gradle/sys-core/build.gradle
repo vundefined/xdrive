@@ -1,0 +1,113 @@
+plugins {
+    id 'java-library'
+}
+
+group 'com.wypaperplane.syscore'
+version '0.0.1'
+
+sourceCompatibility = JavaVersion.VERSION_18
+targetCompatibility = JavaVersion.VERSION_18
+compileJava.options.encoding('UTF-8')
+compileTestJava.options.encoding('UTF-8')
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+ext{
+    springVersion = '6.0.9'
+    springDataVersion = '2.7.5'
+    fasterxmlVersion = '2.15.1'
+}
+
+repositories {
+    maven {
+        url "https://maven.aliyun.com/repository/public"
+    }
+    maven {
+        url "https://maven.aliyun.com/repository/jcenter"
+    }
+    maven {
+        url "https://maven.aliyun.com/repository/spring"
+    }
+    maven {
+        url "https://maven.aliyun.com/repository/spring-plugin"
+    }
+    maven {
+        url "https://maven.aliyun.com/repository/gradle-plugin"
+    }
+    mavenCentral()
+}
+
+dependencies {
+    api("org.springframework:spring-aop:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-beans:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-context:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-context-support:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-core:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-expression:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-jcl:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-web:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-webmvc:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-jdbc:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-tx:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-oxm:${springVersion}"){transitive(false)}
+    api("org.springframework:spring-messaging:${springVersion}"){transitive(false)}
+    api("org.springframework.data:spring-data-commons:${springDataVersion}"){transitive(false)}
+    api("org.springframework.data:spring-data-keyvalue:${springDataVersion}"){transitive(false)}
+    api("org.springframework.data:spring-data-redis:${springDataVersion}"){transitive(false)}
+    implementation('org.springframework:spring-messaging:${springDataVersion}'){transitive(false)}
+
+    api("com.fasterxml.jackson.core:jackson-core:${fasterxmlVersion}"){transitive(false)}
+    api("com.fasterxml.jackson.core:jackson-databind:${fasterxmlVersion}"){transitive(false)}
+    api("com.fasterxml.jackson.core:jackson-annotations:${fasterxmlVersion}"){transitive(false)}
+    api("com.fasterxml.jackson:jackson-bom:${fasterxmlVersion}"){transitive(false)}
+    api("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${fasterxmlVersion}"){transitive(false)}
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:${fasterxmlVersion}"){transitive(false)}
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${fasterxmlVersion}"){transitive(false)}
+    implementation("com.fasterxml.woodstox:woodstox-core:6.5.0"){transitive(false)}
+    implementation("org.codehaus.woodstox:stax2-api:4.2.1"){transitive(false)}
+
+    api('org.slf4j:slf4j-api:2.0.0'){transitive(false)}
+    api('ch.qos.logback:logback-core:1.4.0'){transitive(false)}
+    api('ch.qos.logback:logback-classic:1.4.0'){transitive(false)}
+
+    api 'org.reactivestreams:reactive-streams:1.0.4'
+    api("io.micrometer:micrometer-observation:1.10.2"){transitive(false)}
+    api("io.micrometer:micrometer-commons:1.10.2"){transitive(false)}
+
+    api 'com.github.pagehelper:pagehelper:5.3.0'
+    api 'tk.mybatis:mapper:4.2.2'
+    implementation 'org.mybatis:mybatis:3.5.10'
+    implementation 'org.mybatis:mybatis-spring:3.0.0'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.7'
+    implementation 'com.github.ben-manes.caffeine:caffeine:3.1.5'
+
+    // api 'jakarta.annotation:jakarta.annotation-api:2.1.1'
+    api 'jakarta.validation:jakarta.validation-api:3.0.2'
+    api 'org.hibernate.validator:hibernate-validator:8.0.0.Final'
+    api 'com.aventrix.jnanoid:jnanoid:2.0.0'
+
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+
+    // implementation 'io.lettuce:lettuce-core:6.2.1.RELEASE'
+    implementation("redis.clients:jedis:3.8.0"){transitive(false)}
+    implementation 'org.apache.commons:commons-pool2:2.11.1'
+    implementation("com.squareup.okhttp3:okhttp:4.11.0"){transitive(false)}
+    implementation 'com.squareup.okio:okio:3.2.0'
+
+    // 二维码生成与解析
+    implementation("com.google.zxing:core:3.5.1"){transitive(false)}
+    implementation("com.google.zxing:javase:3.5.1"){transitive(false)}
+    implementation("com.beust:jcommander:1.82"){transitive(false)}
+
+    implementation 'org.yaml:snakeyaml:2.0'
+
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testImplementation "org.springframework:spring-test:${springVersion}"
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}

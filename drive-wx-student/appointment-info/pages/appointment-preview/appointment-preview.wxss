@@ -1,0 +1,57 @@
+@import '/styles/color-enum.wxss';
+@import '/styles/txt-style.wxss';
+
+.img-size {
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 80rpx;
+	margin: 10rpx 10rpx 10rpx 10rpx;
+	/* filter: grayscale(100%); */
+}
+
+.preview {
+	display: flex;
+	flex-direction: row;
+	padding: 0rpx 44rpx;
+}
+
+.preview-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 审核中 */
+.red-bd {
+    border: 8rpx solid red;
+}
+
+/* 通过 */
+.green-bd {
+    border: 8rpx solid green;
+}
+
+/* 未通过 */
+.blue-bd {
+    border: 8rpx solid blue;
+}
+
+/* 已取消 */
+.orange-bd {
+    border: 8rpx solid orange;
+}
+
+.nd-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20rpx 0rpx 0rpx 0rpx;
+}
+
+.nd-text {
+	color: #999999;
+	font-size: 30rpx;
+	margin: 14rpx 0rpx 0rpx 0rpx;
+}

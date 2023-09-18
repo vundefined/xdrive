@@ -1,0 +1,18 @@
+.img-upload-small {
+    width: 90rpx;
+    height: 90rpx;
+	border: 1rpx solid #F2F2F2;
+	margin-left: 40rpx;
+}
+
+.img-upload-large {
+    width: 670rpx;
+    height: 280rpx;
+    padding: 0rpx 40rpx;
+}
+
+.img-a {
+	width: 620rpx;
+	height: 620rpx;
+	margin: 10rpx 65rpx 0rpx 65rpx;
+}

@@ -1,0 +1,11 @@
+@import "/styles/label-style.wxss";
+@import "/styles/color-enum.wxss";
+@import "/styles/nodata.wxss";
+@import "/styles/common-margin.wxss";
+@import "/styles/img-style.wxss";
+
+page {
+    width: 750rpx;
+    box-sizing: border-box;
+    background-color: #F5F5F5;
+}

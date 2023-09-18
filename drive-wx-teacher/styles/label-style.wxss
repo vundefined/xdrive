@@ -1,0 +1,49 @@
+.label {
+    display: flex;
+    flex-direction: row;
+    padding: 28rpx 44rpx;
+    border-bottom: 2rpx solid #F2F2F2;
+}
+
+.label-b {
+    display: flex;
+    flex-direction: row;
+    padding: 24rpx 0rpx;
+    border-bottom: 2rpx solid #F2F2F2;
+}
+
+.label-title {
+    width: 200rpx;
+    font-weight: 300;
+    font-size: 32rpx;
+    color: #000000;
+}
+
+.label-field {
+    width: 400rpx;
+    font-weight: 300;
+    font-size: 32rpx;
+	color: #737373;
+	margin-left: 40rpx;
+}
+
+.card-b {
+    width: 634rpx;
+    margin: 20rpx 20rpx 30rpx 20rpx;
+    background-color: #ffffff;
+    padding: 20rpx 38rpx 30rpx 38rpx;
+    border-radius: 20rpx;
+}
+
+.ma-split {
+    width: 700rpx;
+    height: 2rpx;
+    margin: 90rpx 25rpx 20rpx 25rpx;
+    border-bottom: 4rpx dashed #bdb8b8;
+}
+
+.mb-split {
+    width: 750rpx;
+    height: 100rpx;
+}
+

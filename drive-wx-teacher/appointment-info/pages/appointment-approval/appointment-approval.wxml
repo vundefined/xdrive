@@ -1,0 +1,68 @@
+<view class="title">操作说明:</view>
+<view class="txt-a">当选择完已通过学员后，务必点击 “其余学员设置不通过按钮”。</view>
+<view class="txt-a">以通知未通过的学员，以及为后续的数据统计做准确的分析。</view>
+<view class="txt-a">预约统计表示连续通过次数或未通过次数</view>
+
+<view class="title">筛选:</view>
+<view class="row-center-wrap-b padding-a">
+	<block wx:for="{{appointmentClassDuringList}}" wx:key="classId">
+		<view class="{{classId == item.classId ? 'cd-selected-class' : 'cd-normal-class'}}" data-class-id="{{item.classId}}" catchtap="appointmentClassCurrent">{{driveLicenseClassTree[item.classIndex[0]].cName}} - {{driveLicenseClassTree[item.classIndex[0]].children[item.classIndex[1]].cName}}</view>
+	</block>
+</view>
+<view class="box-a">
+<block wx:for="{{appointmentRecordVoList}}" wx:key="id">
+	<view class="card-b">
+		<view class="label-b">
+			<view class="label-title">头像</view>
+			<image class="img-upload-small" src="{{staticUrl + item.wxUserBase.avatar}}"></image>
+		</view>
+		<view class="label-b">
+			<view class="label-title">预约时间</view>
+			<view class="label-field">{{item.addTime}}</view>
+		</view>
+		<view class="label-b">
+			<view class="label-title">预约项目</view>
+			<view class="label-field">{{driveLicenseClassTree[item.classIndex[0]].cName}} - {{driveLicenseClassTree[item.classIndex[0]].children[item.classIndex[1]].cName}}</view>
+		</view>
+		<view class="label-b">
+			<view class="label-title">预约时间段</view>
+			<view class="label-field">{{item.duringStartTime}} - {{item.duringEndTime}}</view>
+		</view>
+		<view class="label-b">
+			<view class="label-title">预约学员</view>
+			<view class="label-field">{{item.wxUserBase.reallname}} - {{item.wxUserBase.mobile}}</view>
+		</view>
+		<view class="label-b">
+			<view class="label-title">预约状态</view>
+			<view wx:if="{{item.status == 0}}" class="label-field blue">审核中</view>
+			<view wx:if="{{item.status == 1}}" class="label-field green">通过</view>
+			<view wx:if="{{item.status == 2}}" class="label-field red">未通过</view>
+			<view wx:if="{{item.status == 3}}" class="label-field orange">已取消</view>
+		</view>
+		<view class="label-b">
+			<view class="label-title">预约统计</view>
+			<view class="label-field">
+				<!-- 
+				<text class="green">通过: 1 </text>
+				<text class="red"> 未通过: 2</text>
+				-->
+				<text>请等待, 正在修复</text>
+			</view>
+		</view>
+		<view class="row-center">
+			<button class="margin-b" style="width: 300rpx;" wx:if="{{item.status == 1 || item.appointmentStatus.code == 2 }}" type="warn" data-index="{{index}}" catch:tap="changeStatusTap">撤销至审核中</button>
+			<button class="margin-b" style="width: 300rpx;" wx:if="{{item.status == 0}}" type="primary" data-index="{{index}}" catch:tap="appointmentApproved">通过</button>
+		</view>
+	</view>
+</block>
+<block wx:if="{{appointmentRecordVoList.length == 0}}">
+    <view class="nd-box">
+        <view class="nd-text">暂无数据</view>
+    </view>
+</block>
+</view>
+
+<!--  -->
+<view class="fixed-bottom" wx:if="{{appointmentRecordVoList.length != 0}}">
+    <button class="btn-absolute" style="width: 700rpx; height: 80rpx;" type="primary" catch:tap="appointmentRejected">其余学员设置不通过</button>    
+</view>

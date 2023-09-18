@@ -1,0 +1,4 @@
+@import '/styles/label-style.wxss';
+@import '/styles/txt-style.wxss';
+@import '/styles/img-size.wxss';
+@import '/styles/common-margin.wxss';

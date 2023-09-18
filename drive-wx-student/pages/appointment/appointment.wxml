@@ -1,0 +1,8 @@
+<view class="title">预约规则说明: </view>
+<view class="txt-a">
+    <text style="color: #EE2C2C;">注意，此系统的默认预约方式为，今天预约，明天练车。</text>
+    <text>{{appointmentRule.ruleTxt}}</text>
+</view>
+<button class="margin-b" type="primary" disabled="{{hasTeacher}}" catch:tap="toCommitTap">下一步</button>
+<button class="margin-b" type="primary" disabled="{{hasTeacher}}" catchtap="previewTap">今日预约预览</button>
+<view class="mb-split"></view>

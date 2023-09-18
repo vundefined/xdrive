@@ -1,0 +1,40 @@
+plugins {
+    id 'java-library'
+}
+
+group 'org.apache.shiro'
+version '0.0.1'
+
+sourceCompatibility = JavaVersion.VERSION_18
+targetCompatibility = JavaVersion.VERSION_18
+compileJava.options.encoding('UTF-8')
+compileTestJava.options.encoding('UTF-8')
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':shiro-core')
+    implementation project(':shiro-cache')
+    implementation project(':shiro-config')
+    implementation project(':shiro-event')
+    implementation project(':shiro-lang')
+
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+
+    implementation 'org.owasp.encoder:encoder:1.2.1'
+    implementation('org.slf4j:slf4j-api:2.0.0'){transitive(false)}
+    implementation('ch.qos.logback:logback-core:1.4.0'){transitive(false)}
+    implementation('ch.qos.logback:logback-classic:1.4.0'){transitive(false)}
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wypaperplane.syscore.mapper.AppointmentClassDuringMapper">
+
+    <delete id="deleteByClassIds">
+        delete from appointment_class_during where wx_user_id = #{wxUserId} and
+        <foreach item="item" index="index" collection="classIdList" open="class_id in (" separator="," close=")" nullable="true">#{item}</foreach>
+    </delete>
+</mapper>

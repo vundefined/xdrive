@@ -1,0 +1,68 @@
+<view class="page">
+    <navigator class="label" url="/personal-info/pages/base-info/base-info">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">基本信息</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/personal-info/pages/job-info/job-info">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">职业信息</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/personal-info/pages/car-manage/car-manage">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">教练车辆管理</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/personal-info/pages/appointment-rule/appointment-rule">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">预约规则设置</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/personal-info/pages/invite-drive/invite-drive">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">邀请学员加入</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/recommend/pages/index/index">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">推广拉新</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/personal-info/pages/student/student">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">我的学员</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/personal-info/pages/feedback/feedback">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">意见反馈</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+    <navigator class="label" url="/pages/webvieww/webvieww?srcPath=https://wyflamingo.com/drive_guide_teacher/index.html">
+        <view>
+            <image class="img-a" src="/images/plane.png"></image>
+            <text class="text-a">操作指南</text>
+        </view>
+        <image class="img-b" src="/images/arrow_right.png"></image>
+    </navigator>
+</view>
+
+
+

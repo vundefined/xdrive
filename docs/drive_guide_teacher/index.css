@@ -1,0 +1,10 @@
+.container {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+}
+
+.img-size{
+	width: 98vw;
+	box-sizing: border-box;
+}

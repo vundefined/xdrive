@@ -1,0 +1,60 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/appointment/appointment",
+        "pages/personal/personal",
+        "pages/webvieww/webvieww",
+        "pages/publicity/publicity",
+        "pages/notification/notification"
+    ],
+    "subpackages": [{
+            "root": "personal-info",
+            "name": "personal-info",
+            "pages": [
+                "pages/base-info/base-info",
+                "pages/job-info/job-info",
+                "pages/teachers/teachers",
+                "pages/teachers-detail/teachers-detail",
+                "pages/feedback/feedback",
+                "pages/feedbackhistory/feedbackhistory"
+            ]
+        },
+        {
+            "root": "appointment-info",
+            "name": "appointment-info",
+            "pages": [
+                "pages/appointment-commit/appointment-commit",
+                "pages/appointment-record/appointment-record",
+                "pages/appointment-preview/appointment-preview"
+            ]
+        }
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "Weixin",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#DBDCE4",
+        "selectedColor": "#029FFD",
+        "list": [{
+            "pagePath": "pages/index/index",
+            "text": "首页",
+            "iconPath": "/images/tabbar/tab_a_b.png",
+            "selectedIconPath": "/images/tabbar/tab_a_a.png"
+        }, {
+            "pagePath": "pages/appointment/appointment",
+            "text": "预约",
+            "iconPath": "/images/tabbar/tab_c_b.png",
+            "selectedIconPath": "/images/tabbar/tab_c_a.png"
+        }, {
+            "pagePath": "pages/personal/personal",
+            "text": "我的",
+            "iconPath": "/images/tabbar/tab_d_b.png",
+            "selectedIconPath": "/images/tabbar/tab_d_a.png"
+        }]
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

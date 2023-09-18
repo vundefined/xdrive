@@ -1,0 +1,46 @@
+<view class="card-b">
+    <view class="label-b">
+        <view class="label-title">头像</view>
+        <image class="img-upload-small" src="{{staticUrl + userBase.avatar}}"></image>
+    </view>
+    <view class="label-b">
+        <view class="label-title">真实姓名</view>
+        <view class="label-field">{{userBase.reallname}}</view>
+    </view>
+    <view class="label-b">
+        <view class="label-title">手机号</view>
+        <view class="label-field">{{userBase.mobile}}</view>
+    </view>
+    <view class="label-b">
+        <view class="label-title">教练从业时间</view>
+        <view class="label-field">{{teacherJob.time}}</view>
+    </view>
+    <view class="label-b">
+        <view class="label-title">驾校名称</view>
+        <view class="label-field">{{teacherJob.companyName}}</view>
+    </view>
+    <view class="label-b">
+        <view class="label-title">驾校地址</view>
+        <view class="label-field">{{teacherJob.companyAddress}}</view>
+    </view>
+    <view class="label-b">
+        <view class="label-title">教练证件编号</view>
+        <view class="label-field">{{teacherJob.encode}}</view>
+    </view>
+</view>
+<view class="title">教练证件编号图片:</view>
+<image class="img-upload-large" src="{{staticUrl + teacherJob.img}}"></image>
+<block wx:for="{{teacherCarList}}" wx:key="id">
+    <view class="card-b">
+        <view class="label-b">
+            <view class="label-title">车辆型号</view>
+            <view class="label-field">{{item.name}}</view>
+        </view>
+        <view class="label-b">
+            <view class="label-title">车牌号</view>
+            <view class="label-field">{{item.encode}}</view>
+        </view>
+        <image class="img-a" src="{{staticUrl + item.img}}"></image>
+    </view>
+</block>
+<view class="mb-split"></view>

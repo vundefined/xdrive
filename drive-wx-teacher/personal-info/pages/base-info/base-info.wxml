@@ -1,0 +1,27 @@
+<form catchsubmit="basicSave">
+    <view class="label">
+        <view class="label-title">头像</view>
+        <image class="img-upload-small" wx:if="{{basicInfo.avatar}}" src="{{staticUrl + basicInfo.avatar}}" catch:tap="uploadFile"></image>
+        <image class="img-upload-small" wx:else src="/images/adda.png" catch:tap="uploadFile"></image>
+    </view>
+    <view class="label">
+        <view class="label-title">昵称</view>
+        <input class="label-field" type="text" name="nickname" value="{{basicInfo.nickname}}" placeholder="请输入..." />
+    </view>
+    <view class="label">
+        <view class="label-title">真实姓名</view>
+        <input class="label-field" type="text" name="reallname" value="{{basicInfo.reallname}}" placeholder="请输入..." />
+    </view>
+    <view class="label">
+        <view class="label-title">手机号</view>
+        <input class="label-field" type="number" name="mobile" value="{{basicInfo.mobile}}" placeholder="请输入..." />
+    </view>
+    <view class="label">
+        <view class="label-title">性别</view>
+        <radio-group class="label-field" bindchange="genderChange">
+            <radio value="0" checked="{{basicInfo.gender == 0}}">男</radio>
+            <radio value="1" checked="{{basicInfo.gender == 1}}" class="margin-d">女</radio>
+        </radio-group>
+    </view>
+    <button class="margin-a" type="primary" formType="submit">保存</button>
+</form>

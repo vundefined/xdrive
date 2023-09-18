@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wypaperplane.syscore.mapper.TeacherOfStudentMapper">
+
+    <resultMap id="userBaseMap" type="com.wypaperplane.syscore.vo.TeacherOfStudentVo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="student_id" property="studentId" jdbcType="INTEGER"/>
+        <result column="teacher_id" property="teacherId" jdbcType="INTEGER"/>
+        <result column="recommend" property="recommend" jdbcType="INTEGER"/>
+        <result column="qr_type" property="qrType" jdbcType="TINYINT"/>
+        <result column="add_time" property="addTime" jdbcType="TIMESTAMP"/>
+        <result column="deleted" property="deleted" jdbcType="TINYINT"/>
+        <association property="wxUserBase" javaType="com.wypaperplane.syscore.entity.WxUserBase">
+            <id column="user_id" property="id" jdbcType="INTEGER"/>
+            <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+            <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
+            <result column="reallname" property="reallname" jdbcType="VARCHAR"/>
+            <result column="gender" property="gender" jdbcType="TINYINT"/>
+            <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
+    <select id="studentBase" resultMap="userBaseMap">
+        SELECT
+            tos.id,
+            tos.student_id,
+            tos.teacher_id,
+            tos.recommend,
+            tos.qr_type,
+            tos.add_time,
+            tos.deleted,
+            wx_user.id as user_id,
+            wx_user.avatar,
+            wx_user.nickname,
+            wx_user.reallname,
+            wx_user.gender,
+            wx_user.mobile
+        FROM teacher_of_student tos
+        LEFT JOIN wx_user ON wx_user.id = tos.student_id
+        WHERE tos.teacher_id = #{teacherId}
+    </select>
+
+    <select id="teacherBase" resultMap="userBaseMap">
+        SELECT
+            tos.id,
+            tos.student_id,
+            tos.teacher_id,
+            tos.recommend,
+            tos.qr_type,
+            tos.add_time,
+            tos.deleted,
+            wx_user.id as user_id,
+            wx_user.avatar,
+            wx_user.nickname,
+            wx_user.reallname,
+            wx_user.gender,
+            wx_user.mobile
+        FROM teacher_of_student tos
+        LEFT JOIN wx_user ON wx_user.id = tos.teacher_id
+        WHERE tos.student_id = #{studentId}
+    </select>
+
+    <resultMap id="userDetailMap" type="com.wypaperplane.syscore.vo.TeacherDetailVo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <association property="wxUserBase" javaType="com.wypaperplane.syscore.entity.WxUserBase">
+            <id column="id" property="id" jdbcType="INTEGER"/>
+            <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+            <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
+            <result column="reallname" property="reallname" jdbcType="VARCHAR"/>
+            <result column="gender" property="gender" jdbcType="TINYINT"/>
+            <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        </association>
+        <association property="teacherJob" javaType="com.wypaperplane.syscore.entity.TeacherJob">
+            <id column="certificate_id" property="id" jdbcType="INTEGER"/>
+            <result column="certificate_time" property="time" jdbcType="DATE"/>
+            <result column="certificate_encode" property="encode" jdbcType="VARCHAR"/>
+            <result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+            <result column="company_address" property="companyAddress" jdbcType="VARCHAR"/>
+            <result column="certificate_img" property="img" jdbcType="VARCHAR"/>
+        </association>
+        <collection property="teacherCarList" ofType="com.wypaperplane.syscore.entity.TeacherCar">
+            <id column="car_id" property="id" jdbcType="INTEGER"/>
+            <result column="car_name" property="name" jdbcType="VARCHAR"/>
+            <result column="car_encode" property="encode" jdbcType="VARCHAR"/>
+            <result column="car_img" property="img" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+    <select id="teacherDetail" resultMap="userDetailMap">
+        SELECT
+            wx_user.id,
+            wx_user.avatar,
+            wx_user.nickname,
+            wx_user.reallname,
+            wx_user.gender,
+            wx_user.mobile,
+            teacher_job.id as certificate_id,
+            teacher_job.time as certificate_time,
+            teacher_job.encode as certificate_encode,
+            teacher_job.company_name,
+            teacher_job.company_address,
+            teacher_job.img as certificate_img,
+            teacher_car.id as car_id,
+            teacher_car.name as car_name,
+            teacher_car.encode as car_encode,
+            teacher_car.img as car_img
+        FROM wx_user
+                 INNER JOIN teacher_job ON wx_user.id = teacher_job.wx_user_id
+                 INNER JOIN teacher_car ON wx_user.id = teacher_car.wx_user_id
+        WHERE wx_user.id = #{teacherId};
+    </select>
+
+</mapper>

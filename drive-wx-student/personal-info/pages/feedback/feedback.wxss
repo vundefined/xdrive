@@ -1,0 +1,46 @@
+.feedback{
+	width: 750rpx;
+	box-sizing: border-box;
+	padding: 30rpx 30rpx 30rpx 30rpx;
+}
+.title{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.tips{
+	color: #1A1A1A;
+	font-size: 32rpx;
+}
+
+.feedback-history{
+	color: #148AF4;
+	font-size: 28rpx;
+}
+
+.text-area{
+	width: 690rpx;
+	height: 400rpx;
+	box-sizing: border-box;
+	font-size: 28rpx;
+	padding: 10rpx 20rpx;
+	background-color: #ffffff;
+	margin: 44rpx 0rpx 0rpx 0rpx;
+	border-radius: 8rpx;
+	border: 2rpx solid #F2F2F2;
+}
+
+.commit-btn{
+	width: 690rpx;
+	height: 100rpx;
+	box-sizing: border-box;
+	text-align: center;
+	line-height: 100rpx;
+	background-color: #07c160;
+	color: #ffffff;
+	font-size: 36rpx;
+	border-radius: 6rpx;
+	margin: 34rpx 0rpx 0rpx 0rpx;
+}

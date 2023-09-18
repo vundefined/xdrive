@@ -1,0 +1,68 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/appointment/appointment",
+        "pages/personal/personal",
+        "pages/webvieww/webvieww"
+	],
+	"subpackages": [{
+		"root": "personal-info",
+		"name": "personal-info",
+		"pages": [
+			"pages/base-info/base-info",
+			"pages/job-info/job-info",
+			"pages/car-manage/car-manage",
+			"pages/student/student",
+			"pages/student-info/student-info",
+			"pages/invite-drive/invite-drive",
+			"pages/feedback/feedback",
+			"pages/feedbackhistory/feedbackhistory",
+			"pages/appointment-rule/appointment-rule",
+			"pages/appointment-class/appointment-class",
+			"pages/appointment-during/appointment-during",
+			"pages/appointment-class-during/appointment-class-during"
+		]
+	}, {
+		"root": "appointment-info",
+		"name": "appointment-info",
+		"pages": [
+			"pages/appointment-approval/appointment-approval",
+			"pages/preview-detail/preview-detail"
+		]
+	}, {
+		"root": "recommend",
+		"name": "recommend",
+		"pages": [
+			"pages/index/index",
+			"pages/apply-price/apply-price"
+		]
+	}],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "Weixin",
+		"navigationBarTextStyle": "black"
+	},
+	"tabBar": {
+		"color": "#DBDCE4",
+		"selectedColor": "#029FFD",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "首页",
+			"iconPath": "/images/tabbar/tab_a_b.png",
+			"selectedIconPath": "/images/tabbar/tab_a_a.png"
+		}, {
+			"pagePath": "pages/appointment/appointment",
+			"text": "预约",
+			"iconPath": "/images/tabbar/tab_c_b.png",
+			"selectedIconPath": "/images/tabbar/tab_c_a.png"
+		}, {
+			"pagePath": "pages/personal/personal",
+			"text": "我的",
+			"iconPath": "/images/tabbar/tab_d_b.png",
+			"selectedIconPath": "/images/tabbar/tab_d_a.png"
+		}]
+	},
+	"style": "v2",
+	"sitemapLocation": "sitemap.json"
+}

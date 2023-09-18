@@ -1,0 +1,21 @@
+<button class="margin-b" type="primary" catch:tap="bindTeacher">扫码添加教练</button>
+
+<block wx:if="{{teacherList.length == 0}}">
+    <view class="nd-box">
+        <view class="nd-text">暂无数据</view>
+    </view>
+</block>
+<block wx:else>
+    <view class="tips-b">提示: 红色为默认选中</view>
+    <block wx:for="{{teacherList}}" wx:key="id">
+        <view class="{{item.wxUserBase.id == settings.commonId ? 'card mdefault' : 'card mnormal'}}" data-index="{{index}}" catchtap="selectTeacher">
+            <image class="avatar" src="{{staticUrl + item.wxUserBase.avatar}}" mode="aspectFit"/>
+            <view>
+                <view>{{item.wxUserBase.reallname}}</view>
+                <view>{{item.wxUserBase.mobile}}</view>
+            </view>
+        </view>
+    </block>
+    <button class="margin-a" type="primary" disabled="{{deleted}}" catchtap="settingsTap">设为默认</button>
+    <button class="margin-a" type="primary" disabled="{{deleted}}" catchtap="teacherDetail">查看详情</button>
+</block>

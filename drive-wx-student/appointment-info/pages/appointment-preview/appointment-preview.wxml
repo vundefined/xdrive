@@ -1,0 +1,24 @@
+<wxs src="./tools.wxs" module="filters" />
+
+<view class="title">边框颜色说明: </view>
+<view class="txt-a"><text class="red">红: 审核中</text>。 <text class="green">绿: 通过</text>。 <text class="blue">蓝: 未通过</text>。<text class="orange">橙: 已取消</text></view>
+<view>
+	<block wx:for="{{previewList}}" wx:key="classId">
+		<view class="title">{{item.className}}</view>
+		<view class="preview">
+			<view class="preview-item" wx:for="{{item.appointmentRecordVoList}}" wx:key="id">
+				<image wx:if="{{item.status == 0}}" class="img-size red-bd" src="{{staticUrl + item.wxUserBase.avatar}}" mode=""/>
+				<image wx:if="{{item.status == 1}}" class="img-size green-bd" src="{{staticUrl + item.wxUserBase.avatar}}" mode=""/>
+				<image wx:if="{{item.status == 2}}" class="img-size blue-bd" src="{{staticUrl + item.wxUserBase.avatar}}" mode=""/>
+				<image wx:if="{{item.status == 3}}" class="img-size orange-bd" src="{{staticUrl + item.wxUserBase.avatar}}" mode=""/>
+				<view>{{item.wxUserBase.nickname}}</view>
+                <view>{{filters.timeHandle(item.addTime)}}</view>
+			</view>
+		</view>
+        <block wx:if="{{item.appointmentRecordVoList == null}}">
+            <view class="nd-box">
+                <view class="nd-text">暂无数据</view>
+            </view>
+        </block>
+	</block>
+</view>

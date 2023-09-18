@@ -1,0 +1,48 @@
+CREATE DATABASE `drive` default character set utf8mb4 collate utf8mb4_unicode_ci;
+
+USE `drive`;
+
+DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE `sys_user` (
+    `id` int(11) NOT NULL COMMENT '主键Id',
+    `sort` tinyint(3) NOT NULL COMMENT '排序',
+    `username` varchar(63) unique NOT NULL COMMENT '管理员名称',
+    `password` varchar(63) NOT NULL COMMENT '管理员密码',
+    `avatar` varchar(127) NOT NULL COMMENT '头像',
+    `mobile` varchar(15) NOT NULL COMMENT '手机号',
+    `email` varchar(31) NOT NULL COMMENT '邮箱',
+    `deleted` tinyint(1) DEFAULT '1' COMMENT '逻辑删除,0禁用,1可用',
+    `role_ids` varchar(127) DEFAULT '[]' COMMENT '角色列表',
+    `add_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updated_time` datetime comment '更新时间',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='管理员表';
+
+DROP TABLE IF EXISTS `sys_role`;
+CREATE TABLE `sys_role` (
+    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键Id',
+    `name` varchar(63) unique NOT NULL COMMENT '角色名称',
+    `encoding` varchar(15) unique NOT NULL COMMENT '角色编码,资源字符串通配符',
+    `desc` varchar(127) NOT NULL COMMENT '角色描述',
+    `menu_ids` varchar(127) DEFAULT '[]' COMMENT '所拥有的菜单',
+    `menuhalf_ids` varchar(127) DEFAULT '[]' COMMENT '所拥有的菜单,父节点半选中',
+    `status` tinyint(1) DEFAULT '0' COMMENT '0false, 1true',
+    `add_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='角色表';
+
+DROP TABLE IF EXISTS `sys_menu`;
+CREATE TABLE `sys_menu` (
+    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键Id',
+    `pid` int(11) NOT NULL COMMENT '父节点id',
+    `sort` tinyint(3) NOT NULL COMMENT '排序',
+    `path` varchar(63) NOT NULL COMMENT '路由地址',
+    `name` varchar(15) NOT NULL COMMENT '组件名称',
+    `component` varchar(31) NOT NULL COMMENT '所映射的组件',
+    `title` varchar(15) NOT NULL COMMENT '菜单名称',
+    `icon` varchar(15) NOT NULL COMMENT '菜单图标',
+    `hidden` tinyint(1) NOT NULL COMMENT '是否显示菜单,0false不显示,1true显示',
+    `keep_alive` tinyint(1) NOT NULL COMMENT '该页面是否缓存',
+    `permission` varchar(15) unique NOT NULL COMMENT '资源编码,资源字符串通配符',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统菜单表';

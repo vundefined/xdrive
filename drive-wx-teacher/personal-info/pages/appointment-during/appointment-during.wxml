@@ -1,0 +1,23 @@
+<view class="label">
+	<view class="label-title">开始时间</view>
+	<picker class="label-field" mode="time" value="{{startTime}}" bindchange="startTimeChange">{{startTime}}</picker>
+</view>
+<view class="label">
+	<view class="label-title">结束时间</view>
+	<picker class="label-field" mode="time" value="{{endTime}}" bindchange="endTimeChange">{{endTime}}</picker>
+</view>
+<button class="margin-c" type="primary" catchtap="appointmentDuringSave">保存</button>
+<button class="margin-c" type="primary" catchtap="defaultDuring">一键生成时间段</button>
+<block wx:if="{{appointmentDuringList.length > 0}}">
+    <view class="ma-split"></view>
+    <view class="title" style="font-weight: bold;">已配置的可预约时间段: </view>
+    <block wx:for="{{appointmentDuringList}}" wx:key="id">
+        <view class="label row-center">
+            <switch type="checkbox" data-index="{{index}}" bindchange="switchChange"></switch>
+            <view class="label-title">阶段 {{index}}</view>
+            <view class="label-field">{{item.startTime}} - {{item.endTime}}</view>
+        </view>
+    </block>
+    <button class="margin-a" type="warn" catchtap="appointmentDuringDelete">删除</button>
+</block>
+<view class="mb-split"></view>
