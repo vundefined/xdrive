@@ -1,5 +1,8 @@
 package com.wypaperplane.drivewxmini.controller;
 
+import com.wypaperplane.drivewxmini.entity.AppointmentClassDuring;
+import com.wypaperplane.drivewxmini.entity.AppointmentRule;
+import com.wypaperplane.drivewxmini.entity.StudentSettings;
 import com.wypaperplane.drivewxmini.service.RabbitmqService;
 import com.wypaperplane.drivewxmini.service.StudentSettingsService;
 import com.wypaperplane.drivewxmini.service.WxAppointmentService;
@@ -7,7 +10,6 @@ import com.wypaperplane.drivewxmini.service.WxAuthService;
 import com.wypaperplane.drivewxmini.vo.AppointmentStudentVo;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
-import com.wypaperplane.syscore.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;

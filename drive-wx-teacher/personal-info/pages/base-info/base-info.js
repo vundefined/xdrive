@@ -57,7 +57,7 @@ Page({
     },
     uploadFile() {
         let that = this;
-        StorageServer.mUploadFile(1).then(function(_filePath) {
+        StorageServer.mUploadFile('WX_AVATAR').then(function(_filePath) {
             that.setData({
                 "basicInfo.avatar": _filePath
             })

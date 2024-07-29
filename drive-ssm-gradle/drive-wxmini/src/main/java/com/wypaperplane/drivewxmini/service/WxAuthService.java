@@ -1,11 +1,11 @@
 package com.wypaperplane.drivewxmini.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.wypaperplane.drivewxmini.entity.WxUser;
+import com.wypaperplane.drivewxmini.entity.WxUserBase;
 import com.wypaperplane.drivewxmini.exceptions.WxCodeException;
-import com.wypaperplane.syscore.entity.WxUser;
-import com.wypaperplane.syscore.entity.WxUserBase;
-import com.wypaperplane.syscore.entity.WxUserVo;
-import com.wypaperplane.syscore.mapper.WxUserMapper;
+import com.wypaperplane.drivewxmini.entity.WxUserVo;
+import com.wypaperplane.drivewxmini.mapper.WxUserMapper;
 import com.wypaperplane.syscore.utils.HttpUtil;
 import com.auth0.jwt.JwtUtil;
 import com.wypaperplane.syscore.utils.NanoidUtil;

@@ -1,8 +1,8 @@
 package com.wypaperplane.shiroapi.controller;
 
 import com.github.pagehelper.PageHelper;
-import com.wypaperplane.syscore.entity.SysUser;
-import com.wypaperplane.syscore.mapper.SysUserMapper;
+import com.wypaperplane.shiroapi.entity.SysUser;
+import com.wypaperplane.shiroapi.mapper.SysUserMapper;
 import com.wypaperplane.shiroapi.shiro.AdminByteSource;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
@@ -55,8 +55,6 @@ public class SysUserController {
     * */
     @RequestMapping(path="/sysUserUpdate", method=RequestMethod.PUT)
     public ResponseResult sysUserUpdate(@RequestBody @Validated SysUser sysUser) {
-        String newPassword = new SimpleHash("MD5", sysUser.getPassword(), new AdminByteSource(sysUser.getUsername()), 4).toHex();
-        sysUser.setPassword(newPassword);
         sysUserMapper.updateByPrimaryKeySelective(sysUser);
         return ResponseResult.success(ResponseCode.SUCCESS);
     }

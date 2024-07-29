@@ -3,17 +3,16 @@ package com.wypaperplane.drivewxmini.controller;
 import com.wypaperplane.drivewxmini.service.QrRecommendService;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
-import com.wypaperplane.syscore.entity.QrRecommend;
+import com.wypaperplane.drivewxmini.entity.QrRecommend;
 import com.wypaperplane.syscore.enumm.StorageCategory;
 import com.wypaperplane.syscore.utils.QrcodeUtil;
-import com.wypaperplane.syscore.vo.QrRecommendVo;
+import com.wypaperplane.drivewxmini.vo.QrRecommendVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
 import java.util.List;
 
 /**
@@ -58,7 +57,7 @@ public class QrRecommendController {
         content.append(teacherId);
         content.append("&qrType=1");
 
-        String dirName = StorageCategory.getEnum(5).getName();
+        String dirName = StorageCategory.QRCODE.getName();
 
         StringBuilder fileName = new StringBuilder();
         fileName.append("driverecommend").append(teacherId).append(".png");

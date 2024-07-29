@@ -1,8 +1,8 @@
 package com.wypaperplane.drivewxmini.service;
 
 import com.wypaperplane.drivewxmini.vo.AppointmentStudentVo;
-import com.wypaperplane.syscore.entity.AppointmentRecord;
-import com.wypaperplane.syscore.mapper.AppointmentRecordMapper;
+import com.wypaperplane.drivewxmini.entity.AppointmentRecord;
+import com.wypaperplane.drivewxmini.mapper.AppointmentRecordMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;

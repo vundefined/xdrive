@@ -1,0 +1,7 @@
+@use 'src/styles/theme-chalk/src/mixins/mixins' as *;
+
+@include b(affix) {
+  @include m(fixed) {
+    position: fixed;
+  }
+}

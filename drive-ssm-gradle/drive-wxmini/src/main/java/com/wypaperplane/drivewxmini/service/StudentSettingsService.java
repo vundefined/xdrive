@@ -1,7 +1,7 @@
 package com.wypaperplane.drivewxmini.service;
 
-import com.wypaperplane.syscore.entity.StudentSettings;
-import com.wypaperplane.syscore.mapper.StudentSettingsMapper;
+import com.wypaperplane.drivewxmini.entity.StudentSettings;
+import com.wypaperplane.drivewxmini.mapper.StudentSettingsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;

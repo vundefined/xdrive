@@ -1,0 +1,12 @@
+@use 'src/styles/theme-chalk/src/mixins/mixins' as *;
+@use 'src/styles/theme-chalk/src/mixins/var' as *;
+@use 'src/styles/theme-chalk/src/common/var' as *;
+
+@include b(header) {
+  @include set-component-css-var('header', $header);
+
+  padding: getCssVar('header-padding');
+  box-sizing: border-box;
+  flex-shrink: 0;
+  height: getCssVar('header-height');
+}

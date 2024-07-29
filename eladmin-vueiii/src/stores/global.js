@@ -3,22 +3,22 @@ import {ref} from "vue";
 
 export const useGlobalStore = defineStore("global", () => {
 
-    let isCollapse = ref(false);
+  let isCollapse = ref(false);
 
-    function setCollapse() {
-        isCollapse.value = !isCollapse.value;
-    }
+  function setCollapse() {
+    isCollapse.value = !isCollapse.value;
+  }
 
-    return {isCollapse, setCollapse}
+  return {isCollapse, setCollapse}
 }, {
-    persist: {
-        enabled: true,
-        strategies: [
-            {
-                key: "global",
-                storage: localStorage
-                // storage: sessionStorage
-            }
-        ]
-    }
+  persist: {
+    enabled: true,
+    strategies: [
+      {
+        key: "global",
+        storage: localStorage
+        // storage: sessionStorage
+      }
+    ]
+  }
 });

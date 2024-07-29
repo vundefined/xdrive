@@ -3,7 +3,7 @@ package com.wypaperplane.drivewxmini.controller;
 import com.wypaperplane.drivewxmini.service.StudentSettingsService;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
-import com.wypaperplane.syscore.entity.StudentSettings;
+import com.wypaperplane.drivewxmini.entity.StudentSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;

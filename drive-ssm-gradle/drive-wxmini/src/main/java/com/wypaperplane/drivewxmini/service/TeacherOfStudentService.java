@@ -1,7 +1,7 @@
 package com.wypaperplane.drivewxmini.service;
 
-import com.wypaperplane.syscore.entity.TeacherOfStudent;
-import com.wypaperplane.syscore.mapper.TeacherOfStudentMapper;
+import com.wypaperplane.drivewxmini.entity.TeacherOfStudent;
+import com.wypaperplane.drivewxmini.mapper.TeacherOfStudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;

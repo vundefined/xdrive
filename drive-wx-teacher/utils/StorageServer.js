@@ -42,7 +42,7 @@ export default {
                     'wxmini-token': token
                 },
                 formData: {
-                    category: 4 // 意见反馈
+                    category: 'FEEDBACK' // 意见反馈
                 },
                 success(res) {
                     let _resData = JSON.parse(res.data);

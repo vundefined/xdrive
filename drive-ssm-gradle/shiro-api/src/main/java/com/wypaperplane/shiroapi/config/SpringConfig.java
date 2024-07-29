@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Import;
 @Import({
         SysCoreConfig.class,
         CorsConfig.class,
-        ShiroConfig.class
+        ShiroConfig.class,
+        MybatisConfig.class
 })
 @ComponentScan(basePackages = {
         "com.wypaperplane.shiroapi.service"

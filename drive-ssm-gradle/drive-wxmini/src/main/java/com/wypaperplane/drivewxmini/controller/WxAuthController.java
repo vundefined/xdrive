@@ -5,7 +5,7 @@ import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
 import com.wypaperplane.syscore.properties.WxStudentProperties;
 import com.wypaperplane.syscore.properties.WxTeacherProperties;
-import com.wypaperplane.syscore.entity.WxUserBase;
+import com.wypaperplane.drivewxmini.entity.WxUserBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

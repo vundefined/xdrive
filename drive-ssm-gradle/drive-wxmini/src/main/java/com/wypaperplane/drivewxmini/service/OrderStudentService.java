@@ -1,7 +1,7 @@
 package com.wypaperplane.drivewxmini.service;
 
-import com.wypaperplane.syscore.entity.OrderStudent;
-import com.wypaperplane.syscore.mapper.OrderStudentMapper;
+import com.wypaperplane.drivewxmini.entity.OrderStudent;
+import com.wypaperplane.drivewxmini.mapper.OrderStudentMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

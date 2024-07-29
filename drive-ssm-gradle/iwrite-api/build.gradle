@@ -1,0 +1,35 @@
+plugins {
+    id 'war'
+}
+
+group 'com.flamingo.iwrite'
+version '0.0.1'
+
+compileJava.options.encoding('UTF-8')
+compileTestJava.options.encoding('UTF-8')
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext{
+    springVersion = '6.0.9'
+}
+
+dependencies {
+    implementation project(':iwrite-entity')
+
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testImplementation "org.springframework:spring-test:${springVersion}"
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}

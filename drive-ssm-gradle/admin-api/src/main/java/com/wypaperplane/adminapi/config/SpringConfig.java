@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Import;
         SysCoreConfig.class
 })
 @ComponentScan(basePackages = {
-        "com.wypaperplane.adminapi.service",
         "com.wypaperplane.adminapi.filter"
 })
 public class SpringConfig {

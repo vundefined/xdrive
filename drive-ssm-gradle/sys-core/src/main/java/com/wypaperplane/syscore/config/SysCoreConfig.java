@@ -14,8 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Properties;
 
@@ -23,13 +21,8 @@ import java.util.Properties;
 @ComponentScan(basePackages = {
         "com.wypaperplane.syscore.service",
         "com.wypaperplane.syscore.properties"
-}, basePackageClasses = {
-        GlobalExceptionHandler.class
-})
-@Import({
-        RedisConfig.class,
-        MybatisConfig.class
-})
+}, basePackageClasses = {GlobalExceptionHandler.class})
+@Import({RedisConfig.class})
 @EnableCaching
 public class SysCoreConfig {
 
@@ -42,7 +35,8 @@ public class SysCoreConfig {
     @Bean
     public PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
         YamlPropertiesFactoryBean yamlPropertiesFactoryBean = new YamlPropertiesFactoryBean();
-        yamlPropertiesFactoryBean.setResources(new ClassPathResource("application-core.yml"));
+        yamlPropertiesFactoryBean.setResources(new ClassPathResource("application-core-dev.yml"));
+        // yamlPropertiesFactoryBean.setResources(new ClassPathResource("application-core-prod.yml"));
         Properties properties = yamlPropertiesFactoryBean.getObject();
         PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer();
         propertySourcesPlaceholderConfigurer.setProperties(properties);
@@ -55,24 +49,5 @@ public class SysCoreConfig {
         cacheManager.setCaffeineSpec(CaffeineSpec.parse(caffeineProperties.getSpec()));
         return cacheManager;
     }
-
-    // @Bean
-    // public MessageConverter jsonMessageConverter(){return new Jackson2JsonMessageConverter();}
 }
 
-/*
-List<String> cacheNames = new ArrayList<>();
-cacheNames.add("cachea");
-cacheManager.setCacheNames(cacheNames);
-
-@Autowired
-private CacheManager cacheManager;
-
-wxMiniService.getDriveLicenseClassTree();
-Cache cache = cacheManager.getCache("licenseClass");
-System.out.println(cache);
-if (!ObjectUtils.isEmpty(cache)) {
-    Cache.ValueWrapper wrapper = cache.get("0");
-    System.out.println(wrapper);
-}
-*/

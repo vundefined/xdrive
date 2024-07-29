@@ -1,8 +1,8 @@
 package com.wypaperplane.drivewxmini.service;
 
-import com.wypaperplane.syscore.entity.QrRecommend;
-import com.wypaperplane.syscore.mapper.QrRecommendMapper;
-import com.wypaperplane.syscore.vo.QrRecommendVo;
+import com.wypaperplane.drivewxmini.entity.QrRecommend;
+import com.wypaperplane.drivewxmini.mapper.QrRecommendMapper;
+import com.wypaperplane.drivewxmini.vo.QrRecommendVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

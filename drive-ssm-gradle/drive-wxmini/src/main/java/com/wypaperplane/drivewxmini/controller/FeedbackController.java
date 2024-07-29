@@ -2,8 +2,8 @@ package com.wypaperplane.drivewxmini.controller;
 
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
-import com.wypaperplane.syscore.entity.Feedback;
-import com.wypaperplane.syscore.mapper.FeedbackMapper;
+import com.wypaperplane.drivewxmini.entity.Feedback;
+import com.wypaperplane.drivewxmini.mapper.FeedbackMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

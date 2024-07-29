@@ -1,7 +1,7 @@
 package com.wypaperplane.drivewxmini.service;
 
-import com.wypaperplane.syscore.entity.Notification;
-import com.wypaperplane.syscore.mapper.NotificationMapper;
+import com.wypaperplane.drivewxmini.entity.Notification;
+import com.wypaperplane.drivewxmini.mapper.NotificationMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

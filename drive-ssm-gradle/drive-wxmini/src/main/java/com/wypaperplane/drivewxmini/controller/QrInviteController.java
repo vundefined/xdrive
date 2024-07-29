@@ -4,7 +4,7 @@ import com.wypaperplane.drivewxmini.service.QrInviteService;
 import com.wypaperplane.drivewxmini.service.WxMiniService;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
-import com.wypaperplane.syscore.entity.QrInvite;
+import com.wypaperplane.drivewxmini.entity.QrInvite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

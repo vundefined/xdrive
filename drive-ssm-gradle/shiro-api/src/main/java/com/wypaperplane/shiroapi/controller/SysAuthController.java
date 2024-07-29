@@ -1,8 +1,8 @@
 package com.wypaperplane.shiroapi.controller;
 
-import com.wypaperplane.syscore.entity.SysMenu;
-import com.wypaperplane.syscore.entity.SysRole;
-import com.wypaperplane.syscore.entity.SysUser;
+import com.wypaperplane.shiroapi.entity.SysMenu;
+import com.wypaperplane.shiroapi.entity.SysRole;
+import com.wypaperplane.shiroapi.entity.SysUser;
 import com.wypaperplane.shiroapi.vo.LoginVo;
 import com.wypaperplane.shiroapi.service.SysRoleService;
 import com.wypaperplane.shiroapi.vo.SysMenuVo;

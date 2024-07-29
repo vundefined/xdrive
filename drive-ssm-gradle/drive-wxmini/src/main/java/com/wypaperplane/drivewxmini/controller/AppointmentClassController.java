@@ -1,11 +1,11 @@
 package com.wypaperplane.drivewxmini.controller;
 
+import com.wypaperplane.drivewxmini.entity.AppointmentClass;
+import com.wypaperplane.drivewxmini.mapper.AppointmentClassMapper;
 import com.wypaperplane.drivewxmini.service.AppointmentClassService;
 import com.wypaperplane.drivewxmini.service.WxAppointmentService;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
-import com.wypaperplane.syscore.entity.AppointmentClass;
-import com.wypaperplane.syscore.mapper.AppointmentClassMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

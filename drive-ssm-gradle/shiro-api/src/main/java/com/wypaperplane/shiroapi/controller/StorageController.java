@@ -2,6 +2,7 @@ package com.wypaperplane.shiroapi.controller;
 
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
+import com.wypaperplane.syscore.enumm.StorageCategory;
 import com.wypaperplane.syscore.service.LocalStorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +23,8 @@ public class StorageController {
     private LocalStorageService localStorageService;
 
     @RequestMapping(path="/create", method= RequestMethod.POST) // , consumes = "multipart/from-data"
-    public ResponseResult create(@RequestParam("file") MultipartFile multipartFile, @RequestParam("category") Integer category) {
-        String fileName = localStorageService.uploadFile(multipartFile, category);
+    public ResponseResult create(@RequestParam("file") MultipartFile multipartFile, @RequestParam("category") StorageCategory storageCategory) {
+        String fileName = localStorageService.uploadFile(multipartFile, storageCategory);
         return ResponseResult.success(ResponseCode.SUCCESS, fileName);
     }
 }

@@ -1,6 +1,6 @@
 package com.wypaperplane.drivewxmini.vo;
 
-import com.wypaperplane.syscore.entity.AppointmentRecord;
+import com.wypaperplane.drivewxmini.entity.AppointmentRecord;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;

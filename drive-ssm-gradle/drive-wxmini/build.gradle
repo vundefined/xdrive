@@ -5,8 +5,6 @@ plugins {
 group 'com.wypaperplane.drivewxmini'
 version '0.0.1'
 
-sourceCompatibility = JavaVersion.VERSION_18
-targetCompatibility = JavaVersion.VERSION_18
 compileJava.options.encoding('UTF-8')
 compileTestJava.options.encoding('UTF-8')
 tasks.withType(JavaCompile) {
@@ -23,7 +21,7 @@ ext{
 
 dependencies {
     implementation project(':java-jwt')
-    implementation project(':sys-core')
+    implementation project(':drive-entity')
 
     compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
 

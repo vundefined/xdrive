@@ -1,8 +1,8 @@
 package com.wypaperplane.shiroapi.controller;
 
 import com.github.pagehelper.PageHelper;
-import com.wypaperplane.syscore.entity.SysRole;
-import com.wypaperplane.syscore.mapper.SysRoleMapper;
+import com.wypaperplane.shiroapi.entity.SysRole;
+import com.wypaperplane.shiroapi.mapper.SysRoleMapper;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
 import org.slf4j.Logger;

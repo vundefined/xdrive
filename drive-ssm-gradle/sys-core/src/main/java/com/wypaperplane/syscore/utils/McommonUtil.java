@@ -11,7 +11,7 @@ import java.util.Map;
 public class McommonUtil {
 
     public static String getDirPath(String dirName) throws IOException {
-        InputStream inputStream = new ClassPathResource("application-core.yml").getInputStream();
+        InputStream inputStream = new ClassPathResource("application-core-prod.yml").getInputStream();
         Yaml yaml = new Yaml();
         Map<String, Object> objectMap = yaml.load(inputStream);
         Map<String, Object> nginxMap = (Map<String, Object>) objectMap.get("nginx");

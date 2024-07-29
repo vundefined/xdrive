@@ -1,10 +1,13 @@
 package com.wypaperplane.drivewxmini.controller;
 
+import com.wypaperplane.drivewxmini.entity.DriveLicenseClass;
+import com.wypaperplane.drivewxmini.entity.OrderStudent;
+import com.wypaperplane.drivewxmini.entity.QrRecommend;
+import com.wypaperplane.drivewxmini.entity.TeacherOfStudent;
 import com.wypaperplane.drivewxmini.service.*;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
-import com.wypaperplane.syscore.entity.*;
-import com.wypaperplane.syscore.mapper.DriveLicenseClassMapper;
+import com.wypaperplane.drivewxmini.mapper.DriveLicenseClassMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

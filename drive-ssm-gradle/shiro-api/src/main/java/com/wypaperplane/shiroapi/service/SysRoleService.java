@@ -1,17 +1,15 @@
 package com.wypaperplane.shiroapi.service;
 
-import com.wypaperplane.syscore.entity.SysMenu;
-import com.wypaperplane.syscore.entity.SysRole;
-import com.wypaperplane.syscore.entity.SysUser;
-import com.wypaperplane.syscore.mapper.SysMenuMapper;
-import com.wypaperplane.syscore.mapper.SysRoleMapper;
+import com.wypaperplane.shiroapi.entity.SysMenu;
+import com.wypaperplane.shiroapi.entity.SysRole;
+import com.wypaperplane.shiroapi.mapper.SysMenuMapper;
+import com.wypaperplane.shiroapi.mapper.SysRoleMapper;
 import com.wypaperplane.shiroapi.vo.SysMenuVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.*;

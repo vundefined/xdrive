@@ -1,9 +1,9 @@
 <template>
-    <div>HOME</div>
+    <div>home index</div>
 </template>
 
 <script setup>
-
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

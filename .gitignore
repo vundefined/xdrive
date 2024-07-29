@@ -9,6 +9,7 @@ captures
 .cxx
 logs
 package-lock.json
+pnpm-lock.yaml
 miniprogram_npm
 /Note/project_drive/dockerdrive/*.war
 

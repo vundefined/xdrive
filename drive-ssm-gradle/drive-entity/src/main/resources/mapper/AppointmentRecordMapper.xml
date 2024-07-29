@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wypaperplane.drivewxmini.mapper.AppointmentRecordMapper">
+
+    <sql id="baseColumn">
+        `id`, `student_id`, `teacher_id`, `class_id`, `class_index`, `during_id`, `during_start_time`, `during_end_time`, `status`, `add_time`
+    </sql>
+
+    <update id="updateStatus">
+        UPDATE appointment_record SET status = #{rejected} WHERE teacher_id = #{teacherId} AND status = #{status} AND add_time LIKE #{addTimeLike};
+    </update>
+
+    <resultMap id="resmap" type="com.wypaperplane.drivewxmini.vo.AppointmentRecordVo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="student_id" property="studentId" jdbcType="INTEGER"/>
+        <result column="teacher_id" property="teacherId" jdbcType="INTEGER"/>
+        <result column="class_id" property="classId" jdbcType="INTEGER"/>
+        <result column="class_index" property="classIndex" jdbcType="VARCHAR" typeHandler="com.wypaperplane.syscore.mybatis.JsonIntegerArrayTypeHandler"/>
+        <result column="during_id" property="duringId" jdbcType="INTEGER"/>
+        <result column="during_start_time" property="duringStartTime" jdbcType="TIME"/>
+        <result column="during_end_time" property="duringEndTime" jdbcType="TIME"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="add_time" property="addTime" jdbcType="TIMESTAMP"/>
+        <association property="wxUserBase" javaType="com.wypaperplane.drivewxmini.entity.WxUserBase">
+            <id column="studentId" property="id" jdbcType="INTEGER"/>
+            <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+            <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
+            <result column="reallname" property="reallname" jdbcType="VARCHAR"/>
+            <result column="gender" property="gender" jdbcType="TINYINT"/>
+            <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
+    <select id="selectByStudent" resultMap="resmap">
+        select
+            sp.id,
+            sp.student_id,
+            sp.teacher_id,
+            sp.class_id,
+            sp.class_index,
+            sp.during_id,
+            sp.during_start_time,
+            sp.during_end_time,
+            sp.status,
+            sp.add_time,
+            wx_user.id as studentId,
+            wx_user.avatar,
+            wx_user.nickname,
+            wx_user.reallname,
+            wx_user.gender,
+            wx_user.mobile
+        from appointment_record sp
+                 INNER JOIN wx_user ON wx_user.id = sp.teacher_id
+        where sp.student_id = #{studentId} ORDER BY sp.add_time DESC
+    </select>
+
+    <select id="selectByTeacher" resultMap="resmap">
+        select
+            sp.id,
+            sp.student_id,
+            sp.teacher_id,
+            sp.class_id,
+            sp.class_index,
+            sp.during_id,
+            sp.during_start_time,
+            sp.during_end_time,
+            sp.status,
+            sp.add_time,
+            wx_user.id as studentId,
+            wx_user.avatar,
+            wx_user.nickname,
+            wx_user.reallname,
+            wx_user.gender,
+            wx_user.mobile
+        from appointment_record sp
+                 INNER JOIN wx_user ON wx_user.id = sp.student_id
+        where sp.teacher_id = #{teacherId}
+        <if test="classId != null">
+            and sp.class_id = #{classId}
+        </if>
+        and sp.add_time like #{localDateLike} ORDER BY sp.add_time ASC
+    </select>
+
+</mapper>

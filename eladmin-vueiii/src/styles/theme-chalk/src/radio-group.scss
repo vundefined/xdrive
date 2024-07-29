@@ -1,0 +1,9 @@
+@use 'src/styles/theme-chalk/src/mixins/mixins' as *;
+@use 'src/styles/theme-chalk/src/common/var' as *;
+
+@include b(radio-group) {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0;
+}

@@ -1,8 +1,8 @@
 package com.wypaperplane.drivewxmini.service;
 
-import com.wypaperplane.syscore.entity.AppointmentClass;
-import com.wypaperplane.syscore.mapper.AppointmentClassDuringMapper;
-import com.wypaperplane.syscore.mapper.AppointmentClassMapper;
+import com.wypaperplane.drivewxmini.entity.AppointmentClass;
+import com.wypaperplane.drivewxmini.mapper.AppointmentClassDuringMapper;
+import com.wypaperplane.drivewxmini.mapper.AppointmentClassMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

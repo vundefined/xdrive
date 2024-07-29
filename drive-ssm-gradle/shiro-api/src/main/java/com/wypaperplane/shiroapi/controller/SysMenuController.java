@@ -2,9 +2,8 @@ package com.wypaperplane.shiroapi.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.wypaperplane.shiroapi.vo.SysMenuVo;
-import com.wypaperplane.syscore.entity.SysMenu;
-import com.wypaperplane.syscore.entity.SysRole;
-import com.wypaperplane.syscore.mapper.SysMenuMapper;
+import com.wypaperplane.shiroapi.entity.SysMenu;
+import com.wypaperplane.shiroapi.mapper.SysMenuMapper;
 import com.wypaperplane.shiroapi.service.SysRoleService;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;

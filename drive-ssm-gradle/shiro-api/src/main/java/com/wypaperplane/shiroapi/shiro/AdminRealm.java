@@ -1,9 +1,9 @@
 package com.wypaperplane.shiroapi.shiro;
 
-import com.wypaperplane.syscore.entity.SysMenu;
-import com.wypaperplane.syscore.entity.SysRole;
-import com.wypaperplane.syscore.entity.SysUser;
-import com.wypaperplane.syscore.mapper.SysUserMapper;
+import com.wypaperplane.shiroapi.entity.SysMenu;
+import com.wypaperplane.shiroapi.entity.SysRole;
+import com.wypaperplane.shiroapi.entity.SysUser;
+import com.wypaperplane.shiroapi.mapper.SysUserMapper;
 import com.wypaperplane.shiroapi.service.SysRoleService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;

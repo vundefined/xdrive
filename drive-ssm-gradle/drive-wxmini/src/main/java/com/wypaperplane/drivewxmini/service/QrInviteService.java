@@ -2,9 +2,9 @@ package com.wypaperplane.drivewxmini.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.wypaperplane.syscore.entity.QrInvite;
+import com.wypaperplane.drivewxmini.entity.QrInvite;
 import com.wypaperplane.syscore.enumm.StorageCategory;
-import com.wypaperplane.syscore.mapper.QrInviteMapper;
+import com.wypaperplane.drivewxmini.mapper.QrInviteMapper;
 import com.wypaperplane.syscore.utils.QrcodeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +47,7 @@ public class QrInviteService {
         objectNode.put("qrType", 0);
         String qrContent = objectNode.toString();
 
-        String dirName = StorageCategory.getEnum(5).getName();
+        String dirName = StorageCategory.QRCODE.getName();
         StringBuilder fileName = new StringBuilder();
         fileName.append("driveinvite").append(qrInvite.getTeacherId()).append(".png");
         QrcodeUtil.generateQrcode(qrContent, "驾驶预约教练邀请码", dirName, fileName.toString());

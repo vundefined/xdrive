@@ -48,7 +48,7 @@ Page({
     },
     uploadFile() {
         let that = this;
-        StorageServer.mUploadFile(2).then(function(_filePath) {
+        StorageServer.mUploadFile('TEACHER_JOB_IMG').then(function(_filePath) {
             that.setData({
                 "jobInfo.img": _filePath
             })

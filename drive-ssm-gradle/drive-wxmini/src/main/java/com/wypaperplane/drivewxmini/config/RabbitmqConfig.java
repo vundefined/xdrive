@@ -61,6 +61,7 @@ public class RabbitmqConfig {
         return BindingBuilder.bind(queueAppointmentDrive).to(exchangeAppointmentDrive).with("appointment.drive.routingkey").noargs();
     }
 
+    /*
     @Bean
     public Queue delayQueueProfitsharingWxpay() {
         return new Queue("profitsharing.wxpay.queue", true, false, false, null);
@@ -77,6 +78,7 @@ public class RabbitmqConfig {
     public Binding bindingDelayProfitsharingWxpay(Queue delayQueueProfitsharingWxpay, CustomExchange delayExchangeProfitsharingWxpay) {
         return BindingBuilder.bind(delayQueueProfitsharingWxpay).to(delayExchangeProfitsharingWxpay).with("profitsharing.wxpay.routingkey").noargs();
     }
+     */
 
     @Bean
     public RabbitListenerContainerFactory<?> rabbitListenerContainerFactory(ConnectionFactory connectionFactory){

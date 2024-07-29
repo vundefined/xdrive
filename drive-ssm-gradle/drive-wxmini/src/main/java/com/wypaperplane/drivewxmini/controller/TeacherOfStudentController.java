@@ -1,12 +1,13 @@
 package com.wypaperplane.drivewxmini.controller;
 
+import com.wypaperplane.drivewxmini.entity.QrInvite;
+import com.wypaperplane.drivewxmini.entity.TeacherOfStudent;
 import com.wypaperplane.drivewxmini.service.*;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
-import com.wypaperplane.syscore.entity.*;
-import com.wypaperplane.syscore.mapper.TeacherOfStudentMapper;
-import com.wypaperplane.syscore.vo.TeacherDetailVo;
-import com.wypaperplane.syscore.vo.TeacherOfStudentVo;
+import com.wypaperplane.drivewxmini.mapper.TeacherOfStudentMapper;
+import com.wypaperplane.drivewxmini.vo.TeacherDetailVo;
+import com.wypaperplane.drivewxmini.vo.TeacherOfStudentVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

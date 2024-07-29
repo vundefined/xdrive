@@ -10,7 +10,8 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 
 @Import({
         SysCoreConfig.class,
-        RabbitmqConfig.class
+        RabbitmqConfig.class,
+        MybatisConfig.class
 })
 @ComponentScan(basePackages = {
         "com.wypaperplane.drivewxmini.service",

@@ -1,15 +1,15 @@
 package com.wypaperplane.drivewxmini.controller;
 
 import com.github.pagehelper.PageHelper;
+import com.wypaperplane.drivewxmini.entity.AppointmentClassDuring;
+import com.wypaperplane.drivewxmini.entity.AppointmentRecord;
+import com.wypaperplane.drivewxmini.entity.StudentSettings;
+import com.wypaperplane.drivewxmini.mapper.AppointmentRecordMapper;
 import com.wypaperplane.drivewxmini.service.StudentSettingsService;
 import com.wypaperplane.drivewxmini.service.WxAppointmentService;
+import com.wypaperplane.drivewxmini.vo.AppointmentRecordVo;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
-import com.wypaperplane.syscore.entity.AppointmentClassDuring;
-import com.wypaperplane.syscore.entity.AppointmentRecord;
-import com.wypaperplane.syscore.entity.StudentSettings;
-import com.wypaperplane.syscore.mapper.AppointmentRecordMapper;
-import com.wypaperplane.syscore.vo.AppointmentRecordVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

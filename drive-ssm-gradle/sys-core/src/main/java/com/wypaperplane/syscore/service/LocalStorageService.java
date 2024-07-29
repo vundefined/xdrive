@@ -17,12 +17,12 @@ public class LocalStorageService {
 
     private final Logger logger = LoggerFactory.getLogger(LocalStorageService.class);
 
-    public String uploadFile(MultipartFile multipartFile, Integer category) {
+    public String uploadFile(MultipartFile multipartFile, StorageCategory storageCategory) {
         if (multipartFile.getSize() < 1) {
             return null;
         }
 
-        String dirName = StorageCategory.getEnum(category).getName();
+        String dirName = storageCategory.getName();
 
         String originalFilename = multipartFile.getOriginalFilename();
         assert originalFilename != null;

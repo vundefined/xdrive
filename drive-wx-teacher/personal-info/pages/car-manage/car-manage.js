@@ -75,7 +75,7 @@ Page({
     },
     uploadFile() {
         let that = this;
-        StorageServer.mUploadFile(3).then(function(_filePath) {
+        StorageServer.mUploadFile('CAR_IMG').then(function(_filePath) {
             that.setData({
                 img: _filePath
             })

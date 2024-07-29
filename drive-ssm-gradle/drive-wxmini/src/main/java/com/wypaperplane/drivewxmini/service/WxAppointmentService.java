@@ -1,8 +1,8 @@
 package com.wypaperplane.drivewxmini.service;
 
-import com.wypaperplane.syscore.entity.*;
-import com.wypaperplane.syscore.mapper.*;
-import com.wypaperplane.syscore.vo.AppointmentRecordVo;
+import com.wypaperplane.drivewxmini.entity.*;
+import com.wypaperplane.drivewxmini.mapper.*;
+import com.wypaperplane.drivewxmini.vo.AppointmentRecordVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
