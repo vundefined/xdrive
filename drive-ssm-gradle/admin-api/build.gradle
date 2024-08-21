@@ -5,25 +5,10 @@ plugins {
 group 'com.wypaperplane.adminapi'
 version '0.0.1'
 
-compileJava.options.encoding('UTF-8')
-compileTestJava.options.encoding('UTF-8')
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
-repositories {
-    mavenCentral()
-}
-
-ext{
-    springVersion = '6.0.9'
-    springSecurityVersion = '6.0.2'
-}
-
 dependencies {
     implementation project(':sys-core')
 
-    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+    compileOnly("jakarta.servlet:jakarta.servlet-api:${servletVersion}")
 
     implementation("org.springframework.security:spring-security-core:${springSecurityVersion}"){transitive(false)}
     implementation("org.springframework.security:spring-security-config:${springSecurityVersion}"){transitive(false)}

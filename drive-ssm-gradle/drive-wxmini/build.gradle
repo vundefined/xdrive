@@ -5,25 +5,11 @@ plugins {
 group 'com.wypaperplane.drivewxmini'
 version '0.0.1'
 
-compileJava.options.encoding('UTF-8')
-compileTestJava.options.encoding('UTF-8')
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
-repositories {
-    mavenCentral()
-}
-
-ext{
-    springVersion = '6.0.9'
-}
-
 dependencies {
     implementation project(':java-jwt')
     implementation project(':drive-entity')
 
-    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+    compileOnly("jakarta.servlet:jakarta.servlet-api:${servletVersion}")
 
     implementation('org.springframework.amqp:spring-rabbit:3.0.3'){transitive(false)}
     implementation('com.rabbitmq:amqp-client:5.17.0'){transitive(false)}

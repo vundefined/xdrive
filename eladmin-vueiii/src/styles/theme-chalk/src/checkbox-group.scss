@@ -1,7 +1,0 @@
-@use 'src/styles/theme-chalk/src/common/var' as *;
-@use 'src/styles/theme-chalk/src/mixins/mixins' as *;
-
-@include b(checkbox-group) {
-  font-size: 0;
-  line-height: 0;
-}

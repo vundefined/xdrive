@@ -5,16 +5,6 @@ plugins {
 group 'org.apache.shiro'
 version '0.0.1'
 
-compileJava.options.encoding('UTF-8')
-compileTestJava.options.encoding('UTF-8')
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation project(':shiro-core')
     implementation project(':shiro-cache')
@@ -22,7 +12,7 @@ dependencies {
     implementation project(':shiro-event')
     implementation project(':shiro-lang')
 
-    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+    compileOnly("jakarta.servlet:jakarta.servlet-api:${servletVersion}")
 
     implementation 'org.owasp.encoder:encoder:1.2.1'
     implementation('org.slf4j:slf4j-api:2.0.0'){transitive(false)}

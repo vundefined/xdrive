@@ -1,9 +1,15 @@
 <template>
   <div>
-    <el-input v-model="iconName" clearable placeholder="请输入图标名称" @clear="filterIcons" @input="filterIcons"
-              :suffix-icon="Search"></el-input>
+    <el-input
+      v-model="iconName"
+      clearable
+      placeholder="请输入图标名称"
+      @clear="filterIcons"
+      @input="filterIcons"
+      :suffix-icon="Search">
+    </el-input>
     <ul class="icon-select-list">
-      <template v-for="[key, component] of Object.entries(ElementPlusIconsVue)" :key="key">
+      <template v-for="[key, component] of Object.entries(iconList)" :key="key">
         <li>
           <el-icon @click="selectedIcon(key)" size="26">
             <component :is="component"></component>
@@ -16,12 +22,17 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import {Search} from "@element-plus/icons-vue";
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-const iconName = ref("");
-const emit = defineEmits(["selected"]);
+let iconList = ref({});
+let iconName = ref("");
+let emit = defineEmits(["selected"]);
+
+onMounted(()=>{
+  iconList.value = ElementPlusIconsVue;
+})
 
 function filterIcons() {
   console.log('iconName---', iconName.value);

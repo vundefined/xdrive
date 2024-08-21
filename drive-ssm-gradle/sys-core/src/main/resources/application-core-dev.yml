@@ -10,7 +10,7 @@ spring:
 
 # iwritedb drivedb
 datasource:
-  url: jdbc:mariadb://localhost:3306/iwritedb?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&autoReconnect=true
+  url: jdbc:mariadb://localhost:3306/drivedb?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&autoReconnect=true
   driver: org.mariadb.jdbc.Driver
   username: root
   password: 12345678

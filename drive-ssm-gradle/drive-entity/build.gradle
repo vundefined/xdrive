@@ -5,16 +5,6 @@ plugins {
 group 'com.wypaperplane.drivewxmini'
 version '0.0.1'
 
-compileJava.options.encoding('UTF-8')
-compileTestJava.options.encoding('UTF-8')
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     api project(':sys-core')
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'

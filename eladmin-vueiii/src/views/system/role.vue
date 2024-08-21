@@ -1,6 +1,6 @@
 <template>
   <div class="role-view">
-    <el-row gutter="10">
+    <el-row :gutter="10">
       <el-col :span="15">
         <div class="role-table">
           <div class="toolbar">

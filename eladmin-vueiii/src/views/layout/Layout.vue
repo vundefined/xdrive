@@ -63,7 +63,7 @@ function menuSelect(index, indexPath, item, routeResult) {
 
 .llayout-side {
   height: 100vh;
-  background-color: #191a20;
+  //background-color: #191a20;
 }
 
 .llayout-main {
@@ -102,7 +102,7 @@ function menuSelect(index, indexPath, item, routeResult) {
   span {
     font-size: 22px;
     font-weight: bold;
-    color: #dadada;
+    //color: #dadada;
     white-space: nowrap;
     margin-left: 8px;
   }

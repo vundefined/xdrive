@@ -3,11 +3,7 @@ plugins {
 }
 
 group 'org.apache.shiro'
-version 'unspecified'
-
-repositories {
-    mavenCentral()
-}
+version '0.0.1'
 
 dependencies {
     implementation project(':shiro-lang')

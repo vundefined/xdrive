@@ -5,39 +5,7 @@ plugins {
 group 'com.wypaperplane.syscore'
 version '0.0.1'
 
-compileJava.options.encoding('UTF-8')
-compileTestJava.options.encoding('UTF-8')
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
-ext{
-    springVersion = '6.0.9'
-    springDataVersion = '2.7.5'
-    fasterxmlVersion = '2.15.1'
-}
-
-repositories {
-    maven {
-        url "https://maven.aliyun.com/repository/public"
-    }
-    maven {
-        url "https://maven.aliyun.com/repository/jcenter"
-    }
-    maven {
-        url "https://maven.aliyun.com/repository/spring"
-    }
-    maven {
-        url "https://maven.aliyun.com/repository/spring-plugin"
-    }
-    maven {
-        url "https://maven.aliyun.com/repository/gradle-plugin"
-    }
-    mavenCentral()
-}
-
 dependencies {
-
     api("org.springframework:spring-aop:${springVersion}"){transitive(false)}
     api("org.springframework:spring-beans:${springVersion}"){transitive(false)}
     api("org.springframework:spring-context:${springVersion}"){transitive(false)}
@@ -102,7 +70,18 @@ dependencies {
     implementation 'org.yaml:snakeyaml:2.0'
 
     // swagger
-    // implementation 'com.github.xiaoymin:knife4j-spring-ui:3.0.3'
+    /*api("io.springfox:springfox-core:${springfoxVersion}"){transitive(false)}
+    api("io.springfox:springfox-schema:${springfoxVersion}"){transitive(false)}
+    api("io.springfox:springfox-spi:${springfoxVersion}"){transitive(false)}
+    api("io.springfox:springfox-spring-web:${springfoxVersion}"){transitive(false)}
+    api("io.springfox:springfox-spring-web-webflux:${springfoxVersion}"){transitive(false)}
+    api("io.springfox:springfox-spring-webmvc:${springfoxVersion}"){transitive(false)}
+    api("io.springfox:springfox-swagger2:${springfoxVersion}"){transitive(false)}
+    api("io.springfox:springfox-swagger-common:${springfoxVersion}"){transitive(false)}
+    api("io.springfox:springfox-swagger-ui:${springfoxVersion}"){transitive(false)}
+    api("io.swagger.core.v3:swagger-annotations:2.1.2"){transitive(false)}
+    api("io.swagger:swagger-annotations:1.5.20"){transitive(false)}
+    api("io.swagger:swagger-models:1.5.20"){transitive(false)}*/
 
     testImplementation 'junit:junit:4.13.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'

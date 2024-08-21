@@ -9,6 +9,9 @@
     <el-icon size="40">
       <component :is="Delete"></component>
     </el-icon>
+    <el-icon size="40">
+      <component :is="ElementPlusIconsVue.Delete"></component>
+    </el-icon>
 
     <i class="iconfont icon-zhongyingwen"></i>
     <i class="iconfont icon-suoxiao"></i>
@@ -19,6 +22,7 @@
 
 <script setup>
 import {Delete, Share, Edit} from "@element-plus/icons-vue";
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 </script>
 
 <style scoped>

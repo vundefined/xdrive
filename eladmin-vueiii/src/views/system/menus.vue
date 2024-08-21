@@ -22,10 +22,12 @@
       <el-table-column prop="path" label="path" align="center" show-overflow-tooltip/>
       <el-table-column prop="component" label="component" align="center" show-overflow-tooltip/>
       <el-table-column prop="title" label="title" align="center"/>
-      <el-table-column prop="icon" label="icon" align="center" v-slot="scope">
-        <el-icon>
-          <User/>
-        </el-icon>
+      <el-table-column prop="icon" label="icon" align="center">
+        <template #default="scope">
+          <el-icon>
+            <component :is="ElementPlusIconsVue[scope.row.icon]"></component>
+          </el-icon>
+        </template>
       </el-table-column>
       <el-table-column prop="hidden" label="hidden" align="center"/>
       <el-table-column prop="keepAlive" label="keepAlive" align="center"/>
@@ -77,8 +79,7 @@
               <el-input v-model="formInfo.icon" placeholder="点击选择图标" readonly>
                 <template #prefix>
                   <el-icon class="el-input__icon" size="26">
-                    <!--<User/>-->
-                    <component :is="formInfo.icon"></component>
+                    <component :is="ElementPlusIconsVue[formInfo.icon]"></component>
                   </el-icon>
                 </template>
               </el-input>
@@ -122,7 +123,7 @@
 import useTable from "@/hooks/useTable";
 import IconSelect from "@/components/IconSelect.vue";
 import {onMounted, reactive, ref} from "vue";
-import {User} from "@element-plus/icons-vue";
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 const {
   query,
@@ -152,7 +153,7 @@ formInfo.value = {
   name: "",
   component: "",
   title: "",
-  icon: "dashboard",
+  icon: null,
   hidden: false,
   keepAlive: false,
   permission: ""

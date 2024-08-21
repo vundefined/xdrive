@@ -16,4 +16,3 @@ include 'shiro-config'
 include 'java-jwt'
 include 'iwrite-api'
 include 'iwrite-entity'
-

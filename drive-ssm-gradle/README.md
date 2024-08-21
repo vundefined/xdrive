@@ -1,6 +1,8 @@
 - [接口文档 knife4j](https://github.com/xiaoymin/knife4j)
 - [rabbit](http://localhost:15672/#/) `wyrabbit 12345678`
 
+swagger ymal enum
+
 # 代码片段
 
 ```

@@ -6,7 +6,7 @@ export default {
   component: Layout,
   meta: {
     title: "首页",
-    icon: "mnt",
+    icon: "Back",
     hidden: false,
     keepAlive: false,
     permission: "home"
@@ -17,7 +17,7 @@ export default {
     component: () => import("@/views/home/index.vue"),
     meta: {
       title: "首页",
-      icon: "mnt",
+      icon: "Back",
       hidden: false,
       keepAlive: false,
       permission: "index"

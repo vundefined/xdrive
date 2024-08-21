@@ -6,7 +6,7 @@ export default {
   component: Layout,
   meta: {
     title: "Dashboard",
-    icon: "dashboard",
+    icon: "Coin",
     hidden: false,
     keepAlive: false,
     permission: "dashboard"
@@ -17,7 +17,7 @@ export default {
     component: () => import("@/views/dashboard/DataVisualize.vue"),
     meta: {
       title: "数据可视化",
-      icon: "database",
+      icon: "Coin",
       hidden: false,
       keepAlive: false,
       permission: "datavisualize"

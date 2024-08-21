@@ -1,0 +1,38 @@
+allprojects {
+    repositories {
+        maven {
+            url "https://maven.aliyun.com/repository/public"
+        }
+        maven {
+            url "https://maven.aliyun.com/repository/jcenter"
+        }
+        maven {
+            url "https://maven.aliyun.com/repository/spring"
+        }
+        maven {
+            url "https://maven.aliyun.com/repository/spring-plugin"
+        }
+        maven {
+            url "https://maven.aliyun.com/repository/gradle-plugin"
+        }
+        mavenCentral()
+    }
+}
+
+//subprojects {
+//    compileJava.options.encoding('UTF-8')
+//    compileTestJava.options.encoding('UTF-8')
+//    tasks.withType(JavaCompile) {
+//        options.encoding = "UTF-8"
+//    }
+//}
+
+ext {
+    springVersion = '6.0.9'
+    springDataVersion = '2.7.5'
+    fasterxmlVersion = '2.15.1'
+    springfoxVersion = '3.0.0'
+    servletVersion = '6.0.0'
+    shiroVersion = '2.0.0-alpha-2'
+    springSecurityVersion = '6.0.2'
+}

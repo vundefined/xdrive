@@ -5,36 +5,6 @@ plugins {
 group 'com.wypaperplane.shiroapi'
 version '0.0.1'
 
-compileJava.options.encoding('UTF-8')
-compileTestJava.options.encoding('UTF-8')
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
-repositories {
-    maven {
-        url "https://maven.aliyun.com/repository/public"
-    }
-    maven {
-        url "https://maven.aliyun.com/repository/jcenter"
-    }
-    maven {
-        url "https://maven.aliyun.com/repository/spring"
-    }
-    maven {
-        url "https://maven.aliyun.com/repository/spring-plugin"
-    }
-    maven {
-        url "https://maven.aliyun.com/repository/gradle-plugin"
-    }
-    mavenCentral()
-}
-
-ext{
-    shiroVersion = '2.0.0-alpha-2'
-    springVersion = '6.0.9'
-}
-
 dependencies {
     implementation project(':sys-core')
     implementation project(':shiro-cache')
@@ -46,7 +16,7 @@ dependencies {
     implementation project(':shiro-web')
     implementation project(':shiro-spring')
 
-    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+    compileOnly("jakarta.servlet:jakarta.servlet-api:${servletVersion}")
 
     // implementation("org.apache.shiro:shiro-cache:${shiroVersion}"){transitive(false)}
     // implementation("org.apache.shiro:shiro-config:${shiroVersion}"){transitive(false)}

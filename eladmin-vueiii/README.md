@@ -8,14 +8,16 @@ https://admin.spicyboy.cn/#/dashboard/dataVisualize
 import.meta.env.VITE_BASE_URL
 
 server: {
-    port: 8087,
-    open: false,
     proxy: {
         '^/admin': {
             target: 'http://localhost:8086/',
             changeOrigin: true
         },
+        rewrite: function (path) {
+          let _path = path.replace(/^\/wvp/, '/api');
+          console.log('proxy-wvp-gb28181--', _path);
+          return _path;
+        }
     },
-    cors: true
 }
 ```
