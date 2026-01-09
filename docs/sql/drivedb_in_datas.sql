@@ -1,12 +1,12 @@
 INSERT INTO `sys_menu` VALUES
-(51,0,1,'/system','/system','system','layout/Layout','系统管理','AddLocation',0,0,'[\"add\",\"edit\"]',0),
-(52,51,2,'menu','menu','menu','system/menus','菜单','Aim',0,0,'[\"download\",\"del\"]',1),
-(53,51,3,'role','role','role','system/role','角色','Avatar',0,0,'[\"edit\"]',1),
-(54,51,4,'user','user','user','system/user','用户','Box',0,0,'[\"del\"]',1),
-(55,0,5,'/iframemm','/iframemm','iframemm','layout/Layout','iframemm','Apple',0,0,'[\"add\"]',0),
-(58,55,6,'iframe01/:id','iframe01/1','iframe01','iframemm/iframe01','iframe01','Bowl',0,0,'[\"add\",\"del\"]',1),
-(59,55,7,'iframe01/:id','iframe01/2','iframe02','iframemm/iframe01','iframe02','Bowl',0,0,'[]',1),
-(61,55,8,'iframe03','iframe03','iframe03','iframemm/iframe03','iframe03','Bowl',0,0,'[\"addd\"]',1);
+(51,0,1,'/system','/system','system','layout/Layout','系统管理','AddLocation',0,0,0,'[\"add\",\"edit\"]'),
+(52,51,2,'menu','menu','menu','system/menus','菜单','Aim',1,0,0,'[\"download\",\"del\"]'),
+(53,51,3,'role','role','role','system/role','角色','Avatar',1,0,0,'[\"edit\"]'),
+(54,51,4,'user','user','user','system/user','用户','Box',1,0,0,'[\"del\"]'),
+(55,0,5,'/iframemm','/iframemm','iframemm','layout/Layout','iframemm','Apple',0,0,0,'[\"add\"]'),
+(58,55,6,'iframe01/:id','iframe01/1','iframe01','iframemm/iframe01','iframe01','Bowl',1,0,0,'[\"add\",\"del\"]'),
+(59,55,7,'iframe01/:id','iframe01/2','iframe02','iframemm/iframe01','iframe02','Bowl',1,0,0,'[]'),
+(61,55,8,'iframe03','iframe03','iframe03','iframemm/iframe03','iframe03','Bowl',1,0,0,'[\"addd\"]');
 
 INSERT INTO `sys_role` VALUES
 (25,'admin','admin','admin-desc','[51,52,53,54,55,58,59,61]','[51]',1,'2022-08-20 19:40:09');

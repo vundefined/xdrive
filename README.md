@@ -47,6 +47,7 @@
 - node v16.20.2
 - vue 3.3.4
 - element-plus 2.3.6
+- [预览地址](https://wyflamingo.com/eladmin-vueiii/#/login)
 
 ```sh
 cd eleadmin-vueiii
