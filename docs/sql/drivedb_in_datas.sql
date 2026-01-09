@@ -1,17 +1,19 @@
 INSERT INTO `sys_menu` VALUES
-(51,0,1,'/system','system','layout/Layout','系统管理','system',0,0,'system'),
-(52,51,2,'menu','menu','system/menus','菜单','menu',0,0,'menu'),
-(53,51,3,'role','role','system/role','角色','role',0,0,'role'),
-(54,51,4,'user','user','system/user','用户','user',0,0,'user');
+(51,0,1,'/system','/system','system','layout/Layout','系统管理','AddLocation',0,0,'[\"add\",\"edit\"]',0),
+(52,51,2,'menu','menu','menu','system/menus','菜单','Aim',0,0,'[\"download\",\"del\"]',1),
+(53,51,3,'role','role','role','system/role','角色','Avatar',0,0,'[\"edit\"]',1),
+(54,51,4,'user','user','user','system/user','用户','Box',0,0,'[\"del\"]',1),
+(55,0,5,'/iframemm','/iframemm','iframemm','layout/Layout','iframemm','Apple',0,0,'[\"add\"]',0),
+(58,55,6,'iframe01/:id','iframe01/1','iframe01','iframemm/iframe01','iframe01','Bowl',0,0,'[\"add\",\"del\"]',1),
+(59,55,7,'iframe01/:id','iframe01/2','iframe02','iframemm/iframe01','iframe02','Bowl',0,0,'[]',1),
+(61,55,8,'iframe03','iframe03','iframe03','iframemm/iframe03','iframe03','Bowl',0,0,'[\"addd\"]',1);
 
 INSERT INTO `sys_role` VALUES
-(25,'admin','admin','admin-desc','[51,52,53,54]','[51]',1,'2022-08-20 19:40:09');
-
+(25,'admin','admin','admin-desc','[51,52,53,54,55,58,59,61]','[51]',1,'2022-08-20 19:40:09');
 
 INSERT INTO `sys_user` VALUES
-(12309099,0,'shiroausername','524dcfedb10c25b3ca3ee4fa21bde7c6','admin_avatar/1675917824369_968.jpg','amobile','aemail',0,'[25]', '2023-10-14 15:00:00', '2023-10-14 15:00:00'),
-(13284482,0,'ausername','$2a$10$i.5vK0vG.twxGQefYKI8ZuQtcychA1.2/OLGr2EBrPTYC5fIE19gO','admin_avatar/1675917824369_968.jpg','amobile','aemail',0,'[25]', '2023-10-14 15:00:00', '2023-10-14 15:00:00'),
-(46123796,0,'shirobusername','7ae96a21c58735b8dafddc58f653aa36','admin_avatar/1675917824369_968.jpg','13276605900','9947033242@qq.com',0,'[25]', '2023-10-14 15:00:00', '2023-10-14 15:00:00');
+(13110713,4,'admin','e0b141de1c8091be350d3fc80de66528','admin_avatar/1675917824369_968.jpg','13276605900','9947033242@qq.com',0,'[25]','2025-11-13 13:47:38',NULL),
+(48351015,0,'wy','f4f70c0520c372d98f32261b010cce97','','13276605800','',0,'[]','2026-01-05 16:16:21',NULL);
 
 INSERT INTO `drive_license_class` VALUES
 (1,0,'A1','大型客车'),

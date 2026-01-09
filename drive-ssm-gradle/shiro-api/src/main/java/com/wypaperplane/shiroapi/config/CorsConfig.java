@@ -35,7 +35,7 @@ public class CorsConfig {
     public CorsConfiguration corsConfiguration() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowCredentials(true); // 允许cookies跨域
-        corsConfiguration.addAllowedOrigin("http://localhost:8087"); // 1 设置访问源地址 http://localhost:8087 https://wyflamingo.com
+        corsConfiguration.addAllowedOrigin("http://localhost:8326");
         corsConfiguration.addAllowedHeader("*"); // 2 设置访问源请求头
         corsConfiguration.addAllowedMethod("*"); // 3 设置访问源请求方法
         corsConfiguration.setMaxAge(maxAge); // 预检请求的缓存时间（秒），即在这个时间段里，对于相同的跨域请求不会再预检了

@@ -1,0 +1,83 @@
+$designWidth: 1920px;
+$designHeight: 1080px;
+
+.large-module {
+  width: $designWidth;
+  display: grid;
+  grid-template-columns: 480px 480px;
+  grid-column-gap: 912px;
+  margin: 0px 24px 0px 24px;
+}
+
+.module {
+  border-image-source: url("@/assets/images/biaotikuang.png");
+  border-image-slice: 39 0 0 0 fill;
+  border-image-width: 39px 0px 0px 0px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch;
+
+  .header {
+    height: 39px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 6px 0px 36px;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    color: #FFFFFF;
+    background: linear-gradient(0deg, #9BCAF2 0%, #DAF2FF 100%);
+    -webkit-background-clip: text;
+  }
+
+  .title-b {
+    height: 39px;
+    line-height: 39px;
+    padding: 0px 0px 0px 36px;
+  }
+
+  .time-pick-b {
+    display: flex;
+    flex-direction: row;
+    li {
+      width: 48px;
+      height: 25px;
+      text-align: center;
+      line-height: 25px;
+      margin: 0px 4px;
+      user-select: none;
+      cursor: pointer;
+      font-size: 12px;
+      background-color: #11385d;
+      color: #c5ced8;
+    }
+    .selected {
+      background-color: #065eb3;
+      color: #d4e3f2;
+    }
+  }
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-rcenter{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.flex-cc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+

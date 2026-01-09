@@ -12,16 +12,23 @@ export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver({importStyle: 'sass'})],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver({importStyle: 'sass'})],
     }),
   ],
   resolve: {
     alias: {
       // '@': resolve(__dirname, "./src"),
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/element/index.scss" as *;` //关键
+      }
     }
   },
   build: {
@@ -37,6 +44,17 @@ export default defineConfig({
   },
   server: {
     open: true,
-    port: 8087,
+    port: 8326,
+    /*proxy: {
+      '^/admin': {
+        target: 'http://localhost:8325',
+        changeOrigin: true,
+        rewrite: function (path) {
+          let _path = path.replace(/^\/wvp/, '/api');
+          console.log('shiro-api---', "http://localhost:8325" + path);
+          return path;
+        }
+      },
+    },*/
   }
 })

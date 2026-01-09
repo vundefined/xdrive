@@ -32,7 +32,7 @@ MXhr.interceptors.response.use(
     loadingInstance.close();
     // console.log("MXhr----", response);
     if (response.data.code === 200) {
-      return response;
+      return response.data.data;
     } else {
       ElMessage.error(response.data.message);
       return Promise.reject(response.data);

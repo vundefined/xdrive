@@ -59,6 +59,7 @@ public class SysMenuController {
             @RequestParam(value = "limit", defaultValue = "10") Integer limit){
         PageHelper.startPage(curPage, limit);
         Example example = new Example(SysMenu.class);
+        example.orderBy("sort");
         example.createCriteria().andEqualTo("title", title);
         List<SysMenu> sysMenuList = sysMenuMapper.selectByExample(example);
         return ResponseResult.successPage(ResponseCode.SUCCESS, sysMenuList);

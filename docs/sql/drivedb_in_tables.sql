@@ -208,3 +208,5 @@ CREATE TABLE `notification` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='系统公告和私信通知';
 
+
+

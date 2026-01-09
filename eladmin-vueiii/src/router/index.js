@@ -2,9 +2,11 @@ import {createRouter, createWebHashHistory} from 'vue-router'
 import error from "@/router/modules/error";
 import home from "@/router/modules/home";
 import dashboard from "@/router/modules/dashboard";
+import largescreen from "@/router/modules/largescreen";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import {useAuthStore} from "@/stores/auth";
+import { cloneDeep } from 'lodash-es';
 
 NProgress.configure({
   easing: "ease", // 动画方式
@@ -15,7 +17,7 @@ NProgress.configure({
 });
 
 export const HOME_URL = "/home/index"
-export const whiteList = ["/403", "/404", "/500", "/layout", "/login", "/loginb", "/large-screen"]
+export const whiteList = ["/403", "/404", "/500", "/layout", "/login", "/loginb", "/largescreen/board", "/largescreen/energy"]
 
 const constantRoutes = [
   {
@@ -33,11 +35,7 @@ const constantRoutes = [
     name: "loginb",
     component: () => import("@/views/LoginB.vue")
   },
-  {
-    path: "/large-screen",
-    name: "large-screen",
-    component: () => import("@/views/LargeScreen.vue")
-  },
+  largescreen,
   home,
   dashboard,
   ...error
@@ -55,18 +53,19 @@ router.beforeEach(async (to, from) => {
   NProgress.start();
   let isAuthenticated = localStorage.getItem("admin-token");
   const authStore = useAuthStore();
-  // console.log('name---', to);
+  console.log('from->', from.path, 'to->', to.path, to.name);
   if (whiteList.includes(to.path)) {
     return true;
   }
   if (isAuthenticated) {
     if (authStore.asyncRoutes.length == 0) {
-      let asyncRoutes = await authStore.getMenuList();
-      asyncRoutes.forEach((item) => {
+      await authStore.getMenuList();
+      cloneDeep(authStore.asyncRoutes).forEach((item) => {
         router.addRoute(item);
       });
-      return {path: to.path}
+      return { ...to, replace: true };  // return {path: to.path}
     }
+    return true;
   } else {
     return {path: "/login"}
   }

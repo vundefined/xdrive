@@ -26,9 +26,6 @@ public class SysRoleService {
     @Autowired
     private SysMenuMapper sysMenuMapper;
 
-    /*
-     * sys_role -> encoding[]
-     * */
     public Set<String> getRoleEncodingSet(List<SysRole> sysRoleList) {
         Set<String> roleEncodingSet = new HashSet<>();
         for (SysRole sysRole: sysRoleList) {
@@ -37,14 +34,9 @@ public class SysRoleService {
         return roleEncodingSet;
     }
 
-    /*
-     * sys_menu -> permission[]
-     * */
     public Set<String> getMenuPermissionSet(List<SysMenu> sysMenuList) {
         Set<String> menuPermissionSet = new HashSet<>();
-        for (SysMenu sysMenu: sysMenuList) {
-            menuPermissionSet.add(sysMenu.getPermission());
-        }
+        // for (SysMenu sysMenu: sysMenuList) {menuPermissionSet.add(sysMenu.getPermission());}
         return menuPermissionSet;
     }
 
@@ -94,7 +86,15 @@ public class SysRoleService {
                     sysMenu.getPath(),
                     sysMenu.getName(),
                     sysMenu.getComponent(),
-                    new SysMenuVo.Meta(sysMenu.getTitle(), sysMenu.getIcon(), sysMenu.getHidden(), sysMenu.getKeepAlive(), sysMenu.getPermission()),
+                    new SysMenuVo.Meta(
+                            sysMenu.getTitle(),
+                            sysMenu.getIcon(),
+                            sysMenu.getUrl(),
+                            sysMenu.getType(),
+                            sysMenu.getHidden(),
+                            sysMenu.getKeepAlive(),
+                            sysMenu.getPermission()
+                    ),
                     new ArrayList<SysMenuVo>()
             ));
         }

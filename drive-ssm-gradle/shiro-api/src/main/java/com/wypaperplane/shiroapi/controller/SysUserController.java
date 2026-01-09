@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.wypaperplane.shiroapi.entity.SysUser;
 import com.wypaperplane.shiroapi.mapper.SysUserMapper;
 import com.wypaperplane.shiroapi.shiro.AdminByteSource;
+import com.wypaperplane.shiroapi.vo.SysUserVo;
 import com.wypaperplane.syscore.ResponseCode;
 import com.wypaperplane.syscore.ResponseResult;
 import com.wypaperplane.syscore.utils.NanoidUtil;
@@ -38,7 +39,7 @@ public class SysUserController {
         sysUser.setId(NanoidUtil.generateNanoidId(8));
         sysUser.setPassword(newPassword);
         sysUser.setDeleted(false);
-        sysUserMapper.insertSelective(sysUser);
+        sysUserMapper.insertSelective((SysUserVo) sysUser);
         return ResponseResult.success(ResponseCode.SUCCESS);
     }
 
@@ -55,7 +56,7 @@ public class SysUserController {
     * */
     @RequestMapping(path="/sysUserUpdate", method=RequestMethod.PUT)
     public ResponseResult sysUserUpdate(@RequestBody @Validated SysUser sysUser) {
-        sysUserMapper.updateByPrimaryKeySelective(sysUser);
+        sysUserMapper.updateByPrimaryKeySelective((SysUserVo) sysUser);
         return ResponseResult.success(ResponseCode.SUCCESS);
     }
 
@@ -63,10 +64,13 @@ public class SysUserController {
     public ResponseResult sysUserPage(String username,
             @RequestParam(value = "curPage", defaultValue = "1") Integer curPage,
             @RequestParam(value = "limit", defaultValue = "10") Integer limit){
-        PageHelper.startPage(curPage, limit);
+        /*PageHelper.startPage(curPage, limit);
         Example example = new Example(SysUser.class);
+        example.orderBy("sort");
         example.createCriteria().andEqualTo("username", username);
-        List<SysUser> sysUserList = sysUserMapper.selectByExample(example);
+        List<SysUser> sysUserList = sysUserMapper.selectByExample(example);*/
+        curPage = curPage - 1;
+        List<SysUserVo> sysUserList = sysUserMapper.selectPage(username, curPage, limit);
         return ResponseResult.successPage(ResponseCode.SUCCESS, sysUserList);
     }
 }

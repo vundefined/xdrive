@@ -1,7 +1,10 @@
 package com.wypaperplane.shiroapi.entity;
 
+import com.wypaperplane.syscore.mybatis.JsonStringArrayTypeHandler;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import org.apache.ibatis.type.JdbcType;
+import tk.mybatis.mapper.annotation.ColumnType;
 import tk.mybatis.mapper.annotation.KeySql;
 import tk.mybatis.mapper.code.IdentityDialect;
 
@@ -24,6 +27,9 @@ public class SysMenu implements Serializable, Cloneable {
     @NotEmpty(message = "path 不能为空字符串")
     private String path;
 
+    @NotEmpty(message = "url 不能为空字符串")
+    private String url;
+
     @NotEmpty(message = "name 不能为空字符串")
     @Column(name = "`name`")
     private String name;
@@ -38,6 +44,9 @@ public class SysMenu implements Serializable, Cloneable {
     @NotEmpty(message = "icon 不能为空字符串")
     private String icon;
 
+    @NotNull(message = "type 为空或类型错误")
+    private Byte type;
+
     @NotNull(message = "hidden 为空或类型错误")
     private Boolean hidden;
 
@@ -45,19 +54,22 @@ public class SysMenu implements Serializable, Cloneable {
     private Boolean keepAlive;
 
     @NotEmpty(message = "permission 为空或类型错误")
-    private String permission;
+    @ColumnType(column = "`permission`", jdbcType = JdbcType.VARCHAR, typeHandler = JsonStringArrayTypeHandler.class)
+    private String[] permission;
 
     public SysMenu() {}
 
-    public SysMenu(Integer id, Integer pid, Byte sort, String path, String name, String component, String title, String icon, Boolean hidden, Boolean keepAlive, String permission) {
+    public SysMenu(Integer id, Integer pid, Byte sort, String path, String url, String name, String component, String title, String icon, Byte type, Boolean hidden, Boolean keepAlive, String[] permission) {
         this.id = id;
         this.pid = pid;
         this.sort = sort;
         this.path = path;
+        this.url = url;
         this.name = name;
         this.component = component;
         this.title = title;
         this.icon = icon;
+        this.type = type;
         this.hidden = hidden;
         this.keepAlive = keepAlive;
         this.permission = permission;
@@ -95,6 +107,14 @@ public class SysMenu implements Serializable, Cloneable {
         this.path = path;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public String getName() {
         return name;
     }
@@ -127,6 +147,14 @@ public class SysMenu implements Serializable, Cloneable {
         this.icon = icon;
     }
 
+    public Byte getType() {
+        return type;
+    }
+
+    public void setType(Byte type) {
+        this.type = type;
+    }
+
     public Boolean getHidden() {
         return hidden;
     }
@@ -143,11 +171,11 @@ public class SysMenu implements Serializable, Cloneable {
         this.keepAlive = keepAlive;
     }
 
-    public String getPermission() {
+    public String[] getPermission() {
         return permission;
     }
 
-    public void setPermission(String permission) {
+    public void setPermission(String[] permission) {
         this.permission = permission;
     }
 

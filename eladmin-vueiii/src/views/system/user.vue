@@ -6,7 +6,7 @@
       <el-button type="primary" @click="queryData">搜索</el-button>
       <el-button type="primary" @click="resetQuery">重置</el-button>
       <el-button type="danger" @click="delteRows">批量删除</el-button>
-      <el-button type="primary" @click="handleAdd">新增</el-button>
+      <el-button type="primary" v-permission="false" @click="handleAdd">新增</el-button>
     </div>
     <el-table ref="multipleTableRef" :data="tableData.list" row-key="id" :header-cell-style="tableHeaderStyle"
               @selection-change="handleSelectionChange">
@@ -19,7 +19,12 @@
       </el-table-column>
       <el-table-column prop="mobile" label="mobile" align="center"/>
       <el-table-column prop="email" label="email" align="center"/>
-      <el-table-column prop="roleIds" label="roleIds" align="center"/>
+      <el-table-column prop="roleIds" label="roleIds" align="center">
+        <template #default="scope">{{scope.row.roleIds}}</template>
+      </el-table-column>
+      <el-table-column prop="roleIds" label="roleIds" align="center">
+        <template #default="scope">{{scope.row.roleNames}}</template>
+      </el-table-column>
       <el-table-column label="Operations" align="center" width="200">
         <template #default="scope">
           <el-button text size="small" type="primary" @click="handleEdit(scope.row)">编辑</el-button>
@@ -37,8 +42,12 @@
       @current-change="handleCurrentPage"
       @size-change="handleSizeChange">
     </el-pagination>
-    <el-dialog v-model="dialogVisible" :title="dialogTitleComputed" :close-on-click-modal="false"
-               :close-on-press-escape="false" :show-close="false" width="30%">
+    <el-dialog
+      v-model="dialogVisible"
+      :title="dialogTitleComputed"
+      :close-on-click-modal="false"
+      :close-on-press-escape="false"
+      :show-close="false" width="30%">
       <el-form :model="formInfo" :rules="formInfoRules" ref="ruleFormRef" label-width="120px">
         <el-form-item label="排序" prop="sort">
           <el-input v-model="formInfo.sort" type="number"/>
@@ -76,10 +85,10 @@
         </el-form-item>
       </el-form>
       <template #footer>
-                <span class="dialog-footer">
-                    <el-button @click="dialogCancel">取消</el-button>
-                    <el-button type="primary" @click="dialogConfirm">确认</el-button>
-                </span>
+        <span class="dialog-footer">
+          <el-button @click="dialogCancel">取消</el-button>
+          <el-button type="primary" @click="dialogConfirm">确认</el-button>
+        </span>
       </template>
     </el-dialog>
   </div>
@@ -95,6 +104,7 @@ import useTable from "@/hooks/useTable";
 import useUpload from "@/hooks/useUpload";
 import MXhr from "@/utils/MXhr";
 import {Plus} from "@element-plus/icons-vue";
+import { cloneDeep } from 'lodash-es';
 
 const {
   query,
@@ -117,7 +127,7 @@ const {
   dialogCancel,
   queryData,
   tableHeaderStyle
-} = useTable("sysUserAdd", "sysUserDeleteById/", "sysUserUpdate", "sysUserPage");
+} = useTable("/admin/sysUserAdd", "/admin/sysUserDeleteById/", "/admin/sysUserUpdate", "/admin/sysUserPage");
 
 formInfo.value = {
   sort: 0,
@@ -152,17 +162,51 @@ const roles = ref({});
 
 onMounted(() => {
   queryData();
-  MXhr.get("sysRolePage", {params: {curPage: 1, limit: 10}}).then((response) => {
-    roles.value = response.data.data.list;
-  });
+  setTimeout(()=> {
+    setRole();
+  }, 1000)
 });
+
+function setRole() {
+  MXhr.get("/admin/sysRolePage", {params: {curPage: 1, limit: 10}}).then((response) => {
+    roles.value = response.list;
+  });
+}
+
+function filterRole(ids) {
+  let _roles = cloneDeep(roles.value);
+}
 </script>
 
-<style scoped>
-@import "../../styles/mtable.css";
-
+<style scoped lang="scss">
 .row-avatar {
   width: 40px;
   height: 40px;
+}
+
+:deep(.avatar-uploader .el-upload) {
+  border: 1px dashed var(--el-border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--el-transition-duration-fast);
+}
+
+:deep(.avatar-uploader .el-upload:hover) {
+  border-color: var(--el-color-primary);
+}
+
+.avatar-uploader .avatar {
+  width: 178px;
+  height: 178px;
+}
+
+.el-icon.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  text-align: center;
 }
 </style>

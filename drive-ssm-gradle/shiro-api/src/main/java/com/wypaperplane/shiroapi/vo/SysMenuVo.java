@@ -17,13 +17,17 @@ public class SysMenuVo implements Serializable {
     public static class Meta {
         private String title;
         private String icon;
+        private String url;
+        private Byte type;
         private Boolean hidden;
         private Boolean keepAlive;
-        private String permission;
+        private String[] permission;
 
-        public Meta(String title, String icon, Boolean hidden, Boolean keepAlive, String permission) {
+        public Meta(String title, String icon, String url, Byte type, Boolean hidden, Boolean keepAlive, String[] permission) {
             this.title = title;
             this.icon = icon;
+            this.url = url;
+            this.type = type;
             this.hidden = hidden;
             this.keepAlive = keepAlive;
             this.permission = permission;
@@ -45,6 +49,21 @@ public class SysMenuVo implements Serializable {
             this.icon = icon;
         }
 
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public Byte getType() {
+            return type;
+        }
+
+        public void setType(Byte type) {
+            this.type = type;
+        }
 
         public Boolean getHidden() {
             return hidden;
@@ -62,11 +81,11 @@ public class SysMenuVo implements Serializable {
             this.keepAlive = keepAlive;
         }
 
-        public String getPermission() {
+        public String[] getPermission() {
             return permission;
         }
 
-        public void setPermission(String permission) {
+        public void setPermission(String[] permission) {
             this.permission = permission;
         }
     }

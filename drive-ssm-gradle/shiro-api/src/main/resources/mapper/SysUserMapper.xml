@@ -1,4 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wypaperplane.shiroapi.mapper.SysUserMapper">
+
+    <resultMap id="resmap" type="com.wypaperplane.shiroapi.vo.SysUserVo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="sort" property="sort" jdbcType="TINYINT"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="deleted" property="deleted" jdbcType="BOOLEAN"/>
+        <result column="role_ids" property="roleIds" jdbcType="VARCHAR" typeHandler="com.wypaperplane.syscore.mybatis.JsonIntegerArrayTypeHandler"/>
+        <result column="add_time" property="addTime" jdbcType="TIMESTAMP"/>
+        <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
+        <result column="roleNames" property="roleNames" jdbcType="VARCHAR" typeHandler="com.wypaperplane.syscore.mybatis.JsonStringArrayTypeHandler"/>
+    </resultMap>
+
+    <select id="selectPage" resultMap="resmap">
+        select
+            su.id,
+            su.sort,
+            su.username,
+            su.password,
+            su.avatar,
+            su.mobile,
+            su.email,
+            su.deleted,
+            su.role_ids,
+            su.add_time,
+            su.updated_time,
+        COALESCE(JSON_ARRAYAGG(sr.name), JSON_ARRAY()) as roleNames
+        from sys_user su
+        left join sys_role sr on JSON_CONTAINS(su.role_ids, JSON_ARRAY(sr.id), '$')
+        <if test="username != null">
+            where su.username like concat('%', #{username}, '%')
+        </if>
+        group by su.id, su.sort, su.username, su.password, su.avatar, su.mobile, su.email, su.deleted, su.role_ids, su.add_time, su.updated_time
+        ORDER BY su.add_time DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
 </mapper>

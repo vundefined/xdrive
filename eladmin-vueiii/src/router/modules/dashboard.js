@@ -7,21 +7,25 @@ export default {
   meta: {
     title: "Dashboard",
     icon: "Coin",
+    url: "/dashboard",
     hidden: false,
     keepAlive: false,
     permission: "dashboard"
   },
-  children: [{
-    path: "datavisualize",
-    name: "datavisualize",
-    component: () => import("@/views/dashboard/DataVisualize.vue"),
-    meta: {
-      title: "数据可视化",
-      icon: "Coin",
-      hidden: false,
-      keepAlive: false,
-      permission: "datavisualize"
-    },
-    children: []
-  }]
+  children: [
+    {
+      path: "datavisualize",
+      name: "DataVisualize",
+      component: () => import("@/views/dashboard/DataVisualize.vue"),
+      meta: {
+        title: "数据可视化",
+        icon: "Coin",
+        url: "datavisualize",
+        hidden: false,
+        keepAlive: false,
+        permission: "datavisualize"
+      },
+      children: []
+    }
+  ]
 }

@@ -38,6 +38,7 @@ const menuTreeProps = {
     return data.meta.title;
   },
 };
+
 onMounted(() => {
   queryMenuTree();
 });
@@ -66,8 +67,6 @@ function clearSelect() {
 function confirmMenu() {
   const keys = treeRef.value.getCheckedKeys(false);
   const halfKeys = treeRef.value.getHalfCheckedKeys();
-  console.log(keys);
-  console.log(halfKeys);
   const _tableRow = props.tableRow;
   if (!_tableRow.propertyIsEnumerable("id")) {
     ElMessage.error("请选择角色");
@@ -81,7 +80,9 @@ function confirmMenu() {
   if (halfKeys.length > 0) {
     _tableRow.menuhalfIds = halfKeys;
   }
-  MXhr.put("sysRoleUpdate", _tableRow);
+  MXhr.put("/admin/sysRoleUpdate", _tableRow).then(res => {
+    ElMessage.success("更新成功")
+  });
 }
 
 function filterNode(value, data) {
@@ -90,8 +91,8 @@ function filterNode(value, data) {
 }
 
 function queryMenuTree() {
-  MXhr.get("sysMenuTree").then((response) => {
-    menuTree.value = response.data.data;
+  MXhr.get("/admin/sysMenuTree").then((response) => {
+    menuTree.value = response;
   });
 }
 

@@ -1,8 +1,9 @@
 <template>
-  <span class="username">{{ authStore.userInfo.username }}</span>
   <el-dropdown trigger="click">
     <div class="avatar">
-      <el-image :src="fileFilter(authStore.userInfo.avatar)" alt="avatar"/>
+      <!--<img class="aimg" :src="fileFilter(authStore.userInfo.avatar)" alt="avatar"/>-->
+      <img class="aimg" src="http://192.168.1.104/avator.jpg" alt="avatar"/>
+      <span class="username">{{ authStore.userInfo.username }}</span>
     </div>
     <template #dropdown>
       <el-dropdown-menu>
@@ -26,6 +27,8 @@ import useUpload from "@/hooks/useUpload";
 
 const authStore = useAuthStore();
 const {fileFilter} = useUpload();
+const infoRef = ref(null);
+const passwordRef = ref(null);
 
 function logout() {
   ElMessageBox.confirm("您是否确认退出登录?", "温馨提示", {
@@ -36,9 +39,6 @@ function logout() {
     authStore.logout();
   });
 }
-
-const infoRef = ref(null);
-const passwordRef = ref(null);
 
 function openDialog(refName) {
   if (refName === "infoRef") return infoRef.value?.openDialog();
@@ -54,15 +54,15 @@ function openDialog(refName) {
 }
 
 .avatar {
-  width: 40px;
-  height: 40px;
-  overflow: hidden;
   cursor: pointer;
-  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.el-image {
-  width: 100%;
-  height: 100%;
+.aimg {
+  width: 40px;
+  height: 40px;
+  margin: 0px 10px 0px 0px;
 }
 </style>

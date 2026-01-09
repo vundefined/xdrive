@@ -34,11 +34,13 @@ const router = useRouter();
 watch(
   () => route.path,
   () => {
-    tabStore.addTabs({
-      path: route.path,
-      title: route.meta.title,
-      close: true
-    });
+    if (route.meta.hidden == false) {
+      tabStore.addTabs({
+        path: route.path,
+        title: route.meta.title,
+        close: true
+      });
+    }
   },
   {
     immediate: true
@@ -60,27 +62,27 @@ function removeTab(name) {
   background-color: #ffffff;
 }
 
-:deep .el-tabs__header {
+:deep(.el-tabs__header) {
   height: 40px;
   padding: 0 10px;
   margin: 0;
 }
 
-:deep .el-tabs__nav-wrap {
+:deep(.el-tabs__nav-wrap) {
   position: absolute;
   width: calc(100% - 120px);
 }
 
-:deep .el-tabs__nav {
+:deep(.el-tabs__nav) {
   border: none !important;
 }
 
-:deep .el-tabs__item {
+:deep(.el-tabs__item) {
   color: #cccccc;
   border: none !important;
 }
 
-:deep .is-active {
+:deep(.is-active) {
   color: #409eff;
   border-bottom: 2px solid #409eff !important;
 }

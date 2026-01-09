@@ -18,7 +18,6 @@ export const useTabsStore = defineStore("tabs", () => {
       tabsList.value.push(tabItem);
     }
     curTabs.value = tabItem.path;
-    router.push(tabItem.path);
   }
 
   function removeTabs(tabPath) {

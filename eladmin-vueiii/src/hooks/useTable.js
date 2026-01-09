@@ -1,8 +1,9 @@
-import {computed, nextTick, reactive, ref} from "vue";
+import {computed, reactive, ref} from "vue";
 import {ElMessage, ElMessageBox} from "element-plus/es";
+import { cloneDeep } from 'lodash-es';
 import MXhr from "@/utils/MXhr";
 
-export default function useTable(addapi, deleteapi, update, pageapi) {
+export default function useTable(addApi, deleteApi, updateApi, pageApi) {
   const query = ref({
     curPage: 1,
     limit: 10
@@ -46,8 +47,7 @@ export default function useTable(addapi, deleteapi, update, pageapi) {
   async function handleEdit(row) {
     dialogTitle.value = 1;
     dialogVisible.value = true;
-    await nextTick();
-    formInfo.value = {...row};
+    formInfo.value = cloneDeep(row);
   }
 
   function handleCurrentPage() { // args -> val: number
@@ -80,7 +80,7 @@ export default function useTable(addapi, deleteapi, update, pageapi) {
       for (const item of multipleSelection) {
         ids.push(item.id);
       }
-      await MXhr.delete(deleteapi + ids);
+      await MXhr.delete(deleteApi + ids);
       ElMessage.success("删除成功");
       queryData();
     });
@@ -91,17 +91,18 @@ export default function useTable(addapi, deleteapi, update, pageapi) {
     if (!_ruleFormRef) return;
     _ruleFormRef.validate((valid) => {
       if (valid) {
+        let _formInfo = cloneDeep(formInfo.value);
         if (dialogTitle.value === 0) {
-          MXhr.post(addapi, formInfo.value).then((response) => {
-            ElMessage.success(response.data.message);
+          MXhr.post(addApi, _formInfo).then((response) => {
+            ElMessage.success("成功");
             _ruleFormRef.resetFields();
             dialogVisible.value = false;
             queryData();
           });
         }
         if (dialogTitle.value === 1) {
-          MXhr.put(update, formInfo.value).then((response) => {
-            ElMessage.success(response.data.message);
+          MXhr.put(updateApi, _formInfo).then((response) => {
+            ElMessage.success("更新成功");
             _ruleFormRef.resetFields();
             dialogVisible.value = false;
             queryData();
@@ -119,11 +120,11 @@ export default function useTable(addapi, deleteapi, update, pageapi) {
   }
 
   function queryData() {
-    MXhr.get(pageapi, {
+    MXhr.get(pageApi, {
       params: query.value
     }).then((response) => {
-      tableData.list = response.data.data.list;
-      tableData.total = response.data.data.total;
+      tableData.list = response.list;
+      tableData.total = response.total;
     });
   }
 

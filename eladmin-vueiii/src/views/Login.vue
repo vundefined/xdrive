@@ -48,7 +48,7 @@ const loginRules = reactive({
   password: [{required: true, message: "请输入密码", trigger: "blur"}]
 });
 const loginForm = reactive({
-  username: "dahai",
+  username: "admin",
   password: "123456"
 });
 
@@ -58,8 +58,8 @@ function handleLogin(formEl) {
     if (valid) {
       loading.value = true;
       try {
-        MXhr.post("auth/login", loginForm).then((response) => {
-          localStorage.setItem("admin-token", response.data.data);
+        MXhr.post("/admin/auth/login", loginForm).then((response) => {
+          localStorage.setItem("admin-token", response);
           ElMessage.success("登录成功！");
           router.push({path: "/home/index"});
         });

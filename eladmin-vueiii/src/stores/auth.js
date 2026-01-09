@@ -2,14 +2,18 @@ import {defineStore} from "pinia";
 import {ref} from "vue";
 import MXhr from "@/utils/MXhr";
 import {ElMessage} from "element-plus";
-import home from "@/router/modules/home";
-import dashboard from "@/router/modules/dashboard";
 
 const modules = import.meta.glob("@/views/*/*.vue");
+const a404 = () => import("@/views/error/404.vue");
 
 function handleRouter(routerList) {
   const _accessedRouters = routerList.filter((item) => {
-    item.component = modules[`/src/views/${item.component}.vue`];
+    let _component = modules[`/src/views/${item.component}.vue`];
+    if (_component == undefined) {
+      item.component = a404;
+    } else {
+      item.component = _component;
+    }
     if (item.children && item.children.length > 0) {
       item.children = handleRouter(item.children);
       return (item.children && item.children.length > 0);
@@ -34,20 +38,15 @@ export const useAuthStore = defineStore("auth", () => {
   let asyncRoutes = ref([]);
 
   async function getMenuList() {
-    let _asyncRoutes = [];
-    await MXhr.get("auth/userInfo").then(function (response) {
-      userInfo.value = response.data.data.userInfo;
-      let _menuInfo = response.data.data.menuInfo;
-      if (_menuInfo.length > 0) {
-        _asyncRoutes = handleRouter(_menuInfo);
-        asyncRoutes.value = [home, dashboard].concat(_asyncRoutes);
-      }
-    });
-    return _asyncRoutes;
+    let response = await MXhr.get("/admin/auth/userInfo");
+    userInfo.value = response.userInfo;
+    if (response.menuInfo.length > 0) {
+      asyncRoutes.value = handleRouter(response.menuInfo);
+    }
   }
 
   function logout() {
-    MXhr.post("auth/logout").then(() => {
+    MXhr.post("/admin/auth/logout").then(() => {
       localStorage.clear();
       window.location.reload();
       ElMessage({

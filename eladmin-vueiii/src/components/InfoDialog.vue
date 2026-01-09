@@ -90,8 +90,8 @@ function dialogConfirm() {
   if (!_ruleFormRef) return;
   _ruleFormRef.validate((valid) => {
     if (valid) {
-      MXhr.put("sysUserUpdate", formInfo).then((response) => {
-        ElMessage.success(response.data.message);
+      MXhr.put("/admin/sysUserUpdate", formInfo).then((response) => {
+        ElMessage.success("更新成功");
         _ruleFormRef.resetFields();
         dialogVisible.value = false;
         ElMessageBox.confirm("更新后需重新登录", "温馨提示", {
@@ -121,4 +121,30 @@ defineExpose({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+:deep(.avatar-uploader .el-upload) {
+  border: 1px dashed var(--el-border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--el-transition-duration-fast);
+}
+
+:deep(.avatar-uploader .el-upload:hover) {
+  border-color: var(--el-color-primary);
+}
+
+.avatar-uploader .avatar {
+  width: 178px;
+  height: 178px;
+}
+
+.el-icon.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  text-align: center;
+}
+</style>

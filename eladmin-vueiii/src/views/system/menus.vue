@@ -12,15 +12,14 @@
       ref="multipleTableRef"
       :data="tableData.list"
       :header-cell-style="tableHeaderStyle"
-      :row-class-name="tableRowClassName"
+      :row-style="tableRowStyle"
       row-key="id"
       @selection-change="handleSelectionChange">
       <el-table-column type="selection" reserve-selection width="55"/>
       <el-table-column prop="sort" label="sort" align="center"/>
       <el-table-column prop="id" label="id" align="center"/>
-      <el-table-column prop="name" label="name" align="center" show-overflow-tooltip/>
       <el-table-column prop="path" label="path" align="center" show-overflow-tooltip/>
-      <el-table-column prop="component" label="component" align="center" show-overflow-tooltip/>
+      <el-table-column prop="url" label="url" align="center" show-overflow-tooltip/>
       <el-table-column prop="title" label="title" align="center"/>
       <el-table-column prop="icon" label="icon" align="center">
         <template #default="scope">
@@ -56,18 +55,37 @@
           <el-input v-model="formInfo.sort" type="number"/>
         </el-form-item>
         <el-form-item label="父节点id" prop="pid">
-          <el-input v-model="formInfo.pid" type="number"/>
+          <el-input v-model="formInfo.pid" type="number" disabled/>
         </el-form-item>
-        <el-form-item label="页面路径" prop="path">
+        <el-form-item label="父节点id" prop="pid">
+          <el-cascader
+            v-model="formInfo.pid"
+            :options="mOptions.pid"
+            :props="propCascader"
+            @change="handleChange"
+            style="width: 100%"
+            clearable/>
+        </el-form-item>
+        <el-form-item label="path" prop="path">
           <el-input v-model="formInfo.path"/>
         </el-form-item>
-        <el-form-item label="组件名称" prop="name">
+        <el-form-item label="url" prop="url">
+          <el-input v-model="formInfo.url"/>
+        </el-form-item>
+        <el-form-item label="name" prop="name">
           <el-input v-model="formInfo.name"/>
         </el-form-item>
-        <el-form-item label="菜单编码" prop="permission">
+        <!--
+        <el-form-item label="permission" prop="permission">
           <el-input v-model="formInfo.permission"/>
         </el-form-item>
-        <el-form-item label="所映射的组件" prop="component">
+        -->
+        <el-form-item label="permission" prop="permission">
+          <el-select v-model="formInfo.permission" multiple placeholder="请选择">
+            <el-option v-for="item in mOptions.permission" :key="item.value" :label="item.label" :value="item.value"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="component" prop="component">
           <el-input v-model="formInfo.component"/>
         </el-form-item>
         <el-form-item label="菜单名称" prop="title">
@@ -87,33 +105,31 @@
             <icon-select ref="iconSelectRef" @selected="iconSelected"/>
           </el-popover>
         </el-form-item>
-        <!--
         <el-form-item label="类型" prop="type">
             <el-radio-group v-model="formInfo.type">
-                <el-radio :label="0">目录</el-radio>
-                <el-radio :label="1">菜单</el-radio>
-                <el-radio :label="2">按钮</el-radio>
+                <el-radio :value="0">目录</el-radio>
+                <el-radio :value="1">菜单</el-radio>
+                <!--<el-radio :value="2">按钮</el-radio>-->
             </el-radio-group>
         </el-form-item>
-        -->
-        <el-form-item label="是否显示菜单" prop="hidden">
+        <el-form-item label="是否隐藏菜单" prop="hidden">
           <el-radio-group v-model="formInfo.hidden">
-            <el-radio :label="true"/>
-            <el-radio :label="false"/>
+            <el-radio :value="true">true</el-radio>
+            <el-radio :value="false">false</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="是否缓存页面" prop="keepAlive">
           <el-radio-group v-model="formInfo.keepAlive">
-            <el-radio :label="true"/>
-            <el-radio :label="false"/>
+            <el-radio :value="true">true</el-radio>
+            <el-radio :value="false">false</el-radio>
           </el-radio-group>
         </el-form-item>
       </el-form>
       <template #footer>
-                <span class="dialog-footer">
-                    <el-button @click="dialogCancel">取消</el-button>
-                    <el-button type="primary" @click="dialogConfirm">确认</el-button>
-                </span>
+        <span class="dialog-footer">
+          <el-button @click="dialogCancel">取消</el-button>
+          <el-button type="primary" @click="dialogConfirm">确认</el-button>
+        </span>
       </template>
     </el-dialog>
   </div>
@@ -122,8 +138,10 @@
 <script setup>
 import useTable from "@/hooks/useTable";
 import IconSelect from "@/components/IconSelect.vue";
-import {onMounted, reactive, ref} from "vue";
+import {onMounted, reactive, ref, watch, watchEffect} from "vue";
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import MXhr from "@/utils/MXhr";
+import { cloneDeep } from 'lodash-es';
 
 const {
   query,
@@ -145,11 +163,12 @@ const {
   dialogCancel,
   queryData,
   tableHeaderStyle
-} = useTable("sysMenuAdd", "sysMenuDeleteById/", "sysMenuUpdate", "sysMenuPage");
+} = useTable("/admin/sysMenuAdd", "/admin/sysMenuDeleteById/", "/admin/sysMenuUpdate", "/admin/sysMenuPage");
 formInfo.value = {
   sort: 0,
   pid: 0,
   path: "",
+  url: "",
   name: "",
   component: "",
   title: "",
@@ -162,6 +181,7 @@ const formInfoRules = reactive({
   sort: [{required: true, message: "Please input sort", trigger: "blur"}],
   pid: [{required: true, message: "Please input pid", trigger: "blur"}],
   path: [{required: true, message: "Please input path", trigger: "blur"}],
+  url: [{required: true, message: "Please input path", trigger: "blur"}],
   name: [{required: true, message: "Please input name", trigger: "blur"}],
   component: [{required: true, message: "Please input component", trigger: "blur"}],
   title: [{required: true, message: "Please input title", trigger: "blur"}],
@@ -170,16 +190,39 @@ const formInfoRules = reactive({
   keepAlive: [{required: true, message: "Please input keepAlive", trigger: "blur"}],
   permission: [{required: true, message: "Please input permission", trigger: "blur"}],
 });
-const tableRowClassName = (row) => {
-  if (row.row.pid === 0) {
-    return "success-row";
-  }
-  return "";
-};
 const iconSelectRef = ref();
 const iconColor = ref("#000000");
+let propCascader = {
+  children: "children",
+  label: "name",
+  value: "id",
+  checkStrictly: true,
+  emitPath: false
+}
+let mOptions = reactive({
+  pid: [],
+  permission: [
+    { value: 'add', label: '新增' },
+    { value: 'edit', label: '编辑' },
+    { value: 'del', label: '删除' },
+    { value: 'download', label: '导出' },
+    { value: 'custom', label: '自定义' },
+  ]
+})
+
+/*watch(()=> formInfo.value.permission, (val)=> {
+  let _val = cloneDeep(val);
+  if (_val.length > 0) {
+    formInfo.value.permission = _val.split(":");
+  }
+}, {
+  // immediate: true,
+  once: true
+})*/
+
 onMounted(() => {
   queryData();
+  queryMenuTree();
 });
 
 function popoverShow() {
@@ -190,9 +233,24 @@ function iconSelected(name) {
   formInfo.value.icon = name;
 }
 
-// function normalizer(node: any) {return {id: node.id, label: node.meta.title, children: node.children};}
+function tableRowStyle(row) {
+  if (row.row.pid === 0) {
+    return {
+      backgroundColor: '#f0f9eb'
+    };
+  }
+  return "";
+}
+
+function queryMenuTree() {
+  MXhr.get("/admin/sysMenuTree").then((response) => {
+    mOptions.pid = response;
+  });
+}
+
+function handleChange(value) {
+  console.log('handleChange---', value)
+}
 </script>
 
-<style scoped>
-@import "../../styles/mtable.css";
-</style>
+<style scoped lang="scss"></style>

@@ -40,6 +40,7 @@ public class SysUser implements Serializable, Cloneable {
 
     private Boolean deleted;
 
+    @NotNull(message = "roleIds 为空或类型错误")
     @ColumnType(
             column = "role_ids",
             jdbcType = JdbcType.VARCHAR,
@@ -52,7 +53,19 @@ public class SysUser implements Serializable, Cloneable {
 
     public SysUser() {}
 
-    public SysUser(Integer id, Byte sort, String username, String password, String avatar, String mobile, String email, Boolean deleted, @NotNull(message = "roleIds 为空或类型错误") Integer[] roleIds, LocalDateTime addTime, LocalDateTime updatedTime) {
+    public SysUser(
+            Integer id,
+            Byte sort,
+            String username,
+            String password,
+            String avatar,
+            String mobile,
+            String email,
+            Boolean deleted,
+            Integer[] roleIds,
+            LocalDateTime addTime,
+            LocalDateTime updatedTime
+    ) {
         this.id = id;
         this.sort = sort;
         this.username = username;

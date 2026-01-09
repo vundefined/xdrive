@@ -61,7 +61,7 @@ import {ref, reactive, onMounted} from "vue";
 import {CircleClose, UserFilled, User, Lock} from "@element-plus/icons-vue";
 import {useRouter} from "vue-router";
 import {ElMessage} from "element-plus";
-import Xhr from "@/utils/MXhr";
+import MXhr from "@/utils/MXhr";
 import useAssets from "@/hooks/useAssets";
 
 const {getImageUrl} = useAssets();
@@ -75,7 +75,7 @@ const loginRules = reactive({
   password: [{required: true, message: "请输入密码", trigger: "blur"}]
 });
 const loginForm = reactive({
-  username: "dahai",
+  username: "admin",
   password: "1234",
   captcha: "",
 });
@@ -91,7 +91,7 @@ function handleLogin(formEl) {
     if (valid) {
       loading.value = true;
       try {
-        Xhr.post("auth/login", loginForm).then((response) => {
+        MXhr.post("/admin/auth/login", loginForm).then((response) => {
           localStorage.setItem("admin-token", response.data.data);
           ElMessage.success("登录成功！");
           router.push({path: "/home/index"});

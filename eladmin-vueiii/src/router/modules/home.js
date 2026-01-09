@@ -7,21 +7,25 @@ export default {
   meta: {
     title: "首页",
     icon: "Back",
+    url: "/home",
     hidden: false,
     keepAlive: false,
     permission: "home"
   },
-  children: [{
-    path: "index",
-    name: "index",
-    component: () => import("@/views/home/index.vue"),
-    meta: {
-      title: "首页",
-      icon: "Back",
-      hidden: false,
-      keepAlive: false,
-      permission: "index"
-    },
-    children: []
-  }]
+  children: [
+    {
+      path: "index",
+      name: "index",
+      component: () => import("@/views/home/index.vue"),
+      meta: {
+        title: "首页",
+        icon: "Back",
+        url: "index",
+        hidden: false,
+        keepAlive: false,
+        permission: "index"
+      },
+      children: []
+    }
+  ]
 }

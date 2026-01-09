@@ -13,7 +13,7 @@
           </div>
           <el-table ref="multipleTableRef" :data="tableData.list" row-key="id"
                     :header-cell-style="tableHeaderStyle"
-                    :row-class-name="tableRowClassName"
+                    :row-style="tableRowStyle"
                     @selection-change="handleSelectionChange" @row-click="rowClick">
             <el-table-column type="selection" reserve-selection width="55"/>
             <el-table-column prop="id" label="id"></el-table-column>
@@ -121,13 +121,8 @@ const {
   dialogCancel,
   queryData,
   tableHeaderStyle
-} = useTable("sysRoleAdd", "sysRoleDeleteById/", "sysRoleUpdate", "sysRolePage");
-const tableRowClassName = (row) => {
-  if (row.id === tableRow.value.id) {
-    return "success-row";
-  }
-  return "";
-};
+} = useTable("/admin/sysRoleAdd", "/admin/sysRoleDeleteById/", "/admin/sysRoleUpdate", "/admin/sysRolePage");
+
 formInfo.value = {
   name: "",
   encoding: "",
@@ -136,11 +131,13 @@ formInfo.value = {
   menuhalfIds: [],
   status: true
 };
+
 const formInfoRules = reactive({
   name: [{required: true, message: "Please input name", trigger: "blur"}],
   encoding: [{required: true, message: "Please input encoding", trigger: "blur"}],
   desc: [{required: true, message: "Please input desc", trigger: "blur"}]
 });
+
 onMounted(() => {
   queryData();
 });
@@ -154,26 +151,24 @@ async function rowClick(row) {
 function changeStatus(event, row) {
   loadingStatus.value = true;
   row.status = event;
-  MXhr.put("sysRoleUpdate", row).then((response) => {
-    ElMessage.success(response.data.message);
+  MXhr.put("/admin/sysRoleUpdate", row).then((response) => {
+    ElMessage.success("更新成功");
     loadingStatus.value = false;
   });
 }
+
+function tableRowStyle(row) {
+  if (row.id === tableRow.value.id) {
+    return {
+      backgroundColor: '#f0f9eb'
+    };
+  }
+  return "";
+}
 </script>
 
-<style scoped>
-@import "../../styles/mtable.css";
-
-.role-view {
-
-}
-
-.role-table {
-
-}
-
+<style scoped lang="scss">
 .menu-tree {
-  /*width: 400px;*/
   padding: 20px 10px 10px 10px;
   border: 1px solid #eeeeee;
   margin: 20px 0px 0px 0px;

@@ -8,11 +8,11 @@
         :collapse="globalStore.isCollapse"
         :unique-opened="true"
         @select="menuSelect">
-        <div class="mlogo">
+        <div class="mlogo" @click="tabStore.goHome()">
           <img src="@/assets/logo.svg" alt="logo"/>
           <span v-show="!globalStore.isCollapse">Admin</span>
         </div>
-        <SubItem :menu-list="authStore.asyncRoutes"></SubItem>
+        <SubItem :menu-list="menuList"></SubItem>
       </el-menu>
     </div>
     <div class="llayout-main">
@@ -41,11 +41,16 @@ import {useGlobalStore} from "@/stores/global.js";
 import Header from "./Header.vue";
 import Tabs from "./Tabs.vue";
 import SubItem from "./SubItem.vue";
+import home from "@/router/modules/home";
+import dashboard from "@/router/modules/dashboard";
+import {useTabsStore} from "@/stores/tabs";
 
 const route = useRoute();
 const authStore = useAuthStore();
 const globalStore = useGlobalStore();
+const tabStore = useTabsStore();
 const cacheRouter = ["Index"];
+const menuList = [home, dashboard].concat(authStore.asyncRoutes);
 
 function menuSelect(index, indexPath, item, routeResult) {
   // console.log(index, indexPath, item, routeResult);
@@ -98,6 +103,7 @@ function menuSelect(index, indexPath, item, routeResult) {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   span {
     font-size: 22px;
